@@ -1,0 +1,29 @@
+{
+  "name": "com-form",
+  "version": "1.0.0",
+  "description": "A form based on React & node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Norn Chronos",
+  "license": "MIT",
+  "dependencies": {
+    "history": "^1.13.1",
+    "radium": "^0.15.3",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-motion": "^0.3.1",
+    "react-router": "^1.0.0",
+    "redux": "^3.0.4",
+    "webpack": "^1.12.6"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.1",
+    "eslint-plugin-react": "^3.10.0",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.5.0"
+  }
+}

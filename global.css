@@ -1,0 +1,45 @@
+body,ul,ol,li,tr,td,th,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,form,button,textarea{
+	margin:0 ;padding: 0;
+	border: 0;
+	font-family: 'Segoe UI',Helvetica,'Microsoft YaHei';
+	font-size: 62.5%;
+	list-style: none;
+}
+
+table { border-collapse: collapse; border-spacing:0 }
+
+.hidden {
+	display: none;
+}
+
+#header-wrapper {
+	width: 100%;
+}
+
+#header {
+	width: 1127px;	
+}
+
+#nav-wrapper {
+	width: 100%;
+}
+
+#nav {
+	width: 1127px;
+}
+
+#category {
+	
+}
+
+.catalog {
+	
+}
+
+.catalogRow {
+	
+}
+
+#content {
+	width: 1127px;
+}
