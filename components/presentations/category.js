@@ -1,10 +1,22 @@
 import React { Component } from 'react'
 
-const catalogData = {
-	react: ['v0.14', 'v0.13'],
-	angular: ['v2.0', 'v1.x'],
-	typescript: ['v1.6.2', 'v1.5.3']
-}
+// const catalogData = {
+// 	react: ['v0.14', 'v0.13'],
+// 	angular: ['v2.0', 'v1.x'],
+// 	typescript: ['v1.6.2', 'v1.5.3']
+// }
+
+const catalogData = [
+	{ belong: react, id: 0, text: 'v0.14' current: false },
+	{ belong: react, id: 1, text: 'v0.13' current: false },
+	{ belong: react, id: 2, text: 'v0.12' current: false },
+	{ belong: angular, id: 0, text: 'v2.0' current: false },
+	{ belong: angular, id: 1, text: 'v1.5.3' current: false },
+	{ belong: angular, id: 2, text: 'v1.4' current: false },
+	{ belong: typescript, id: 0, text: 'v1.7.1' current: false },	
+	{ belong: typescript, id: 1, text: 'v1.6.2' current: false },	
+	{ belong: typescript, id: 2, text: 'v1.5.3' current: false }
+]
 
 export default class Category extends Component {
 	constructor(props, context) {

@@ -1,0 +1,1 @@
+const SELETCED = 'SELETCED'
