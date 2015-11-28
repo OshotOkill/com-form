@@ -1,1 +1,1 @@
-const SELETCED = 'SELETCED'
+export const CURRENT = 'CURRENT'

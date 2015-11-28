@@ -10,6 +10,7 @@ class App extends Component {
 			<div>
 				<Header />
 				<NavBar />
+				<Category />
 				<Content />
 			</div>
 		)
