@@ -1,13 +1,9 @@
-import React { Component } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import App from './components/containers/app.js'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import App from './container/app'
 
-const root = document.getElementById('root');
 
-render(
-	<Provider> 
-		<App /> 
-	</Provider>
-	, root
-)
+injectTapEventPlugin();
+render(<App />, document.getElementById('root'));
+
