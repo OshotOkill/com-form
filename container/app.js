@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider'
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme'
 
-import {
-  Header,
-  AppLeftNav,
-  Content,
-  myTheme
-} from '../components'
+import { Header, AppLeftNav, Content } from '../components'
+import Theme from '../constants/theme'
 
 import '../public/css/global.css'
 import '../public/css/materialdesignicons.min.css'
@@ -39,7 +34,7 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={ getMuiTheme(myTheme) }>
+      <MuiThemeProvider muiTheme={ Theme }>
         <div>
           <Header />
           <AppLeftNav 

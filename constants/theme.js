@@ -1,3 +1,4 @@
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme'
 import { indigo600, white } from 'material-ui/lib/styles/colors'
 
 const myTheme = {
@@ -21,4 +22,6 @@ const myTheme = {
   }
 }
 
-export default myTheme
+const Theme = getMuiTheme(myTheme)
+
+export default Theme

@@ -22,6 +22,8 @@ class LeftGroup extends Component {
           <Home color={white} />
         </IconButton>
         <ToolbarTitle text="首页" />
+        <ToolbarTitle text="聊天" />
+        <ToolbarTitle text="关于" />
 
       </ToolbarGroup>
     )
