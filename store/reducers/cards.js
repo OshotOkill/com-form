@@ -1,85 +1,36 @@
-import pic1 from '../../public/imgs/01.jpg'
-import pic2 from '../../public/imgs/02.jpg'
+import initialState from '../../data'
 
-const initState = [
-  {
-    id: 0,
-    
-    header: {
-      title: "第一个卡片",
-      subtitle: "This is the first card",
-      avatar: ""
-    },
+function cards(state = initialState, action) {
+  const { id, cardsConfigs } = action
 
-    media: {
-      overlay: {
-        title: "第一个卡片",
-        subtitle: "This is the first card",
-        children: <img src={pic1} />
-      }
-    },
-
-    text: "inspired by the communtiy",
-
-    action: <RaisedButton label="hello" primary={true} />
-  },
-
-  {
-    header: {
-      title: "第二个卡片",
-      subtitle: "This is the second card",
-      avatar: ""
-    },
-
-    media: {
-      overlay: {
-        title: "第二个卡片",
-        subtitle: "This is the second card",
-        children: <img src={pic2} />
-      }
-    },
-
-    text: {
-
-    },
-
-    action: {
-
-    }
-  }
-]
-
-function cards(state = initState, action) {
-  const { id, cardsConfigs } = actions
-  
   switch (action.type) {
-    case ADD_NEWS :
+    case ADD_NEWS:
       return [
         {
-          header:{
-            title: action.title,
-            subtitle: action.subtitle,
-            avatar: action.avatar
+          header: {
+            title: cardsConfigs.title,
+            subtitle: cardsConfigs.subtitle,
+            avatar: cardsConfigs.avatar
           },
-          media:{
+          media: {
             overlay: {
-              title: action.mediaTitle,
-              subtitle: action.mediaSubTitle,
-              children: action.mediaChildren
+              title: cardsConfigs.mediaTitle,
+              subtitle: cardsConfigs.mediaSubTitle,
+              children: cardsConfigs.mediaChildren
             }
           },
-          text: action.text,
-          action: action.component
+          text: cardsConfigs.text,
+          action : cardsConfigs.component
         },
         ...state
       ]
-      
-    case DELETE_NEWS :
+
+    case DELETE_NEWS:
       return state.filter(card => {
         card.id !== id
       })
-      
-    default: 
+
+    default:
       return state
   }
 }

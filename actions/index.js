@@ -16,4 +16,7 @@ function deleteCard(id) {
   }
 }
 
-export { addCard, deleteCard }
+export default { 
+  addCard, 
+  deleteCard 
+}

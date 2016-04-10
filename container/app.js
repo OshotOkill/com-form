@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import { connect } from 'react-redux'
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider'
 
 import { Header, AppLeftNav, Content } from '../components'
 import Theme from '../constants/theme'
+import * as actionCreators from '../actions'
 
 import '../public/css/global.css'
 import '../public/css/materialdesignicons.min.css'
@@ -52,4 +54,16 @@ App.childContextTypes = {
   Toggle: React.PropTypes.func
 }
 
-export default App
+function mapStateToProps(state) {
+  return {
+    content: state.content
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actionCreators, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
