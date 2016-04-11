@@ -1,5 +1,5 @@
 import Header from './header'
-import AppLeftNav from './leftnav'
+import AppLeftNav from './appleftnav'
 import Content from './content'
 import Footer from './footer'
 

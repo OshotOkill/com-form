@@ -1,17 +1,17 @@
 import * as actionTypes from '../constants/actionTypes'
 
-const { ADD_TODO, DELETE_TODO } = actionTypes
+const { ADD_CARD, DELETE_CARD } = actionTypes
 
 function addCard(cardConfigs) {
   return {
-    type: ADD_TODO,
+    type: ADD_CARD,
     cardConfigs
   }
 }
 
 function deleteCard(id) {
   return {
-    type: DELETE_TODO,
+    type: DELETE_CARD,
     id
   }
 }

@@ -1,13 +1,14 @@
-import initialState from '../../data'
+import actionTypes from '../../constants/actionTypes'
 
-function cards(state = initialState, action) {
+function cards(state = [], action) {
   const { id, cardsConfigs } = action
+  const { ADD_CARD, DELETE_CARD } = actionTypes
 
   switch (action.type) {
-    case ADD_NEWS:
+    case ADD_CARD:
       return [
         {
-          header: {
+          cardHeader: {
             title: cardsConfigs.title,
             subtitle: cardsConfigs.subtitle,
             avatar: cardsConfigs.avatar
@@ -25,7 +26,7 @@ function cards(state = initialState, action) {
         ...state
       ]
 
-    case DELETE_NEWS:
+    case DELETE_CARD:
       return state.filter(card => {
         card.id !== id
       })

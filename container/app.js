@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider'
 
@@ -35,6 +36,8 @@ class App extends Component {
   }
 
   render() {
+    const { cards, actions } = this.props
+    
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>
@@ -43,7 +46,8 @@ class App extends Component {
             open={ this.state.open } 
             requestChange={ this.handleRequestChange }
             />
-          <Content />
+          <Content cards={cards} actions={actions} />
+          <Footer />
         </div>
       </MuiThemeProvider>
     )
@@ -56,7 +60,7 @@ App.childContextTypes = {
 
 function mapStateToProps(state) {
   return {
-    content: state.content
+    cards: state.cards
   }
 }
 

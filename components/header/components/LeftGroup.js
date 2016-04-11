@@ -10,11 +10,12 @@ import { white } from 'material-ui/lib/styles/colors'
 
 class LeftGroup extends Component {
   render() {
-    const { Toggle } = this.props
+    const { Toggle } = this.context
+    
     return (
       <ToolbarGroup float="left">
 
-        <IconButton style={{ float: 'left', margin: '8px 0 8px -16px' }} onClick={ this.context.Toggle } >
+        <IconButton style={{ float: 'left', margin: '8px 0 8px -16px' }} onClick={ Toggle } >
           <NavigationMenu color={white} />
         </IconButton>
         <ToolbarSeparator style={{ backgroundColor: white, marginRight: '12px' }}/>

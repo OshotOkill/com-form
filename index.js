@@ -12,7 +12,7 @@ injectTapEventPlugin()
 render(
   <Provider store={ configStore(data) }>
     <App />
-  </Provider>, 
+  </Provider>,
   document.getElementById('root')
 )
 
