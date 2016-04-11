@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { connect } from 'react-redux'
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider'
 
-import { Header, AppLeftNav, Content } from '../components'
+import { Header, AppLeftNav, Content, Footer } from '../components'
 import Theme from '../constants/theme'
 import * as actionCreators from '../actions'
 
