@@ -19,7 +19,7 @@ const initialState = {
         overlay: {
           title: "第一个卡片",
           subtitle: "This is the first card",
-          children: <img src={pic1} />
+          image: <img src={pic1} />
         }
       },
 
@@ -29,6 +29,8 @@ const initialState = {
     },
 
     {
+      id: 1,
+      
       cardHeader: {
         title: "第二个卡片",
         subtitle: "This is the second card",
@@ -39,15 +41,13 @@ const initialState = {
         overlay: {
           title: "第二个卡片",
           subtitle: "This is the second card",
-          children: <img src={pic2} />
+          image: <img src={pic2} />
         }
       },
 
       text: "Second wave",
 
-      action: {
-
-      }
+      action: null
     }
   ]
 

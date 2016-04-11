@@ -47,7 +47,6 @@ class App extends Component {
             requestChange={ this.handleRequestChange }
             />
           <Content cards={cards} actions={actions} />
-          <Footer />
         </div>
       </MuiThemeProvider>
     )

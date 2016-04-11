@@ -3,7 +3,7 @@ import Essay from './components/essay'
 
 class Content extends Component {
   render() {
-    const { cards } = this.props
+    const { cards, actions } = this.props
     return (
       <div>
         {cards.map(essay => 

@@ -21,7 +21,7 @@ class Essay extends Component {
             />
           <CardMedia
             overlay={<CardTitle title={media.overlay.title} subtitle={media.overlay.subtitle}/>} expandable={true}>
-            { media.overlay.children }
+            { media.overlay.image }
           </CardMedia>
           <CardText expandable={true}>
             { text }
