@@ -1,4 +1,5 @@
 import * as actionTypes from '../../constants/actionTypes'
+import pic1 from '../../public/imgs/01.jpg'
 
 const { ADD_CARD, DELETE_CARD } = actionTypes
 
@@ -14,19 +15,22 @@ function cards(state = [], action) {
           id: state.reduce((prev, cur) => Math.max(prev, cur.id), -1) + 1,
           
           cardHeader: {
-            title: cardConfigs.title,
-            subtitle: cardConfigs.subtitle,
-            avatar: cardConfigs.avatar
+            title: cardConfigs.cardHeader.title,
+            subtitle: cardConfigs.cardHeader.subtitle,
+            avatar: cardConfigs.cardHeader.avatar
           },
-          media: {
+          
+          cardMedia: {
             overlay: {
-              title: cardConfigs.mediaTitle,
-              subtitle: cardConfigs.mediaSubTitle,
-              children: cardConfigs.mediaChildren
+              title: cardConfigs.overlay.title,
+              subtitle: cardConfigs.overlay.subtitle,
+              image: cardConfigs.overlay.image
             }
           },
-          text: cardConfigs.text,
-          action : cardConfigs.component
+          
+          cardText: cardConfigs.text,
+          
+          cardAction : cardConfigs.cardAction
         }
       ]
 

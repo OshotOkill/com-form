@@ -15,7 +15,7 @@ const initialState = {
         avatar: ""
       },
 
-      media: {
+      cardMedia: {
         overlay: {
           title: "第一个卡片",
           subtitle: "This is the first card",
@@ -23,21 +23,21 @@ const initialState = {
         }
       },
 
-      text: "inspired by the communtiy",
+      cardText: "inspired by the communtiy",
 
-      action: <RaisedButton label="hello" primary={true} />
+      cardAction: <RaisedButton label="hello" primary={true} />
     },
 
     {
       id: 1,
-      
+
       cardHeader: {
         title: "第二个卡片",
         subtitle: "This is the second card",
         avatar: ""
       },
 
-      media: {
+      cardMedia: {
         overlay: {
           title: "第二个卡片",
           subtitle: "This is the second card",
@@ -45,9 +45,9 @@ const initialState = {
         }
       },
 
-      text: "Second wave",
+      cardText: "Second wave",
 
-      action: null
+      cardAction: null
     }
   ]
 

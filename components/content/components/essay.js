@@ -8,7 +8,7 @@ import CardText from 'material-ui/lib/card/card-text'
 
 class Essay extends Component {
   render() {
-    const { cardHeader, media, text, action } = this.props
+    const { cardHeader, cardMedia, cardText, cardAction } = this.props
     
     return (
         <Card style={{ width: '900px', height: 'auto', margin: '100px auto' }}>
@@ -20,14 +20,14 @@ class Essay extends Component {
             showExpandableButton={true}
             />
           <CardMedia
-            overlay={<CardTitle title={media.overlay.title} subtitle={media.overlay.subtitle}/>} expandable={true}>
-            { media.overlay.image }
+            overlay={<CardTitle title={cardMedia.overlay.title} subtitle={cardMedia.overlay.subtitle}/>} expandable={true}>
+            { cardMedia.overlay.image }
           </CardMedia>
           <CardText expandable={true}>
-            { text }
+            { cardText }
           </CardText>
           <CardActions expandable={true}>
-            { action }
+            { cardAction }
           </CardActions>
         </Card>
     );

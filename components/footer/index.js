@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AppBar from 'material-ui/lib/app-bar'
 import TextField from 'material-ui/lib/text-field'
 import RaisedButton from 'material-ui/lib/raised-button'
+import pic1 from '../../public/imgs/01.jpg'
 
 class Footer extends Component {
   constructor(props, context) {
@@ -30,17 +31,17 @@ class Footer extends Component {
         avatar: ''
       },
       
-      media: {
+      cardMedia: {
         overlay: {
           title: this.state.value,
           subtitle: this.state.value,
-          image: ''
+          image: <img src={pic1} />
         }
       },
       
-      text: this.state.value,
+      cardText: this.state.value,
       
-      action: ''
+      cardAction: ''
     }
     
     actions.addCard(cardConfigs)
