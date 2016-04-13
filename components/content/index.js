@@ -3,11 +3,11 @@ import Essay from './components/essay'
 
 class Content extends Component {
   render() {
-    const { cards, actions } = this.props
+    const { cards } = this.props
     return (
       <div>
         {cards.map(essay => 
-          <Essay key={essay.id} {...essay} {...actions} />
+          <Essay key={essay.id} {...essay} />
         )}
       </div>
     )

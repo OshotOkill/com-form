@@ -1,13 +1,18 @@
-import actionTypes from '../../constants/actionTypes'
+import * as actionTypes from '../../constants/actionTypes'
+
+const { ADD_CARD, DELETE_CARD } = actionTypes
 
 function cards(state = [], action) {
   const { id, cardsConfigs } = action
-  const { ADD_CARD, DELETE_CARD } = actionTypes
 
   switch (action.type) {
     case ADD_CARD:
       return [
+        ...state,
+        
         {
+          id: state.reduce((prev, cur) => Math.max(prev, cur.id), -1) + 1,
+          
           cardHeader: {
             title: cardsConfigs.title,
             subtitle: cardsConfigs.subtitle,
@@ -22,14 +27,13 @@ function cards(state = [], action) {
           },
           text: cardsConfigs.text,
           action : cardsConfigs.component
-        },
-        ...state
+        }
       ]
 
     case DELETE_CARD:
-      return state.filter(card => {
+      return state.filter(card => 
         card.id !== id
-      })
+      )
 
     default:
       return state
