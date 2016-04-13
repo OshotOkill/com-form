@@ -44,6 +44,10 @@ class Footer extends Component {
     }
     
     actions.addCard(cardConfigs)
+    
+    this.setState({
+      value: ''
+    })
   }
   
   render() {

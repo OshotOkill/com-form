@@ -3,7 +3,7 @@ import * as actionTypes from '../../constants/actionTypes'
 const { ADD_CARD, DELETE_CARD } = actionTypes
 
 function cards(state = [], action) {
-  const { id, cardsConfigs } = action
+  const { id, cardConfigs } = action
 
   switch (action.type) {
     case ADD_CARD:
@@ -14,19 +14,19 @@ function cards(state = [], action) {
           id: state.reduce((prev, cur) => Math.max(prev, cur.id), -1) + 1,
           
           cardHeader: {
-            title: cardsConfigs.title,
-            subtitle: cardsConfigs.subtitle,
-            avatar: cardsConfigs.avatar
+            title: cardConfigs.title,
+            subtitle: cardConfigs.subtitle,
+            avatar: cardConfigs.avatar
           },
           media: {
             overlay: {
-              title: cardsConfigs.mediaTitle,
-              subtitle: cardsConfigs.mediaSubTitle,
-              children: cardsConfigs.mediaChildren
+              title: cardConfigs.mediaTitle,
+              subtitle: cardConfigs.mediaSubTitle,
+              children: cardConfigs.mediaChildren
             }
           },
-          text: cardsConfigs.text,
-          action : cardsConfigs.component
+          text: cardConfigs.text,
+          action : cardConfigs.component
         }
       ]
 
