@@ -14,19 +14,22 @@ function cards(state = [], action) {
           id: state.reduce((prev, cur) => Math.max(prev, cur.id), -1) + 1,
           
           cardHeader: {
-            title: cardConfigs.title,
-            subtitle: cardConfigs.subtitle,
-            avatar: cardConfigs.avatar
+            title: cardConfigs.cardHeader.title,
+            subtitle: cardConfigs.cardHeader.subtitle,
+            avatar: cardConfigs.cardHeader.avatar
           },
-          media: {
+          
+          cardMedia: {
             overlay: {
-              title: cardConfigs.mediaTitle,
-              subtitle: cardConfigs.mediaSubTitle,
-              children: cardConfigs.mediaChildren
+              title: cardConfigs.cardMedia.overlay.title,
+              subtitle: cardConfigs.cardMedia.overlay.subtitle,
+              image: cardConfigs.cardMedia.overlay.image
             }
           },
-          text: cardConfigs.text,
-          action : cardConfigs.component
+          
+          cardText: cardConfigs.cardText,
+          
+          cardAction : cardConfigs.cardAction
         }
       ]
 
