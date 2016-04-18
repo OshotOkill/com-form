@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import { Header, AppLeftNav, Content, Footer } from '../components'
+import { Header, LeftNav, Content, Footer } from '../components'
 import Theme from '../constants/theme'
 import * as actionCreators from '../actions'
 
@@ -42,7 +42,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={ Theme }>
         <div>
           <Header />
-          <AppLeftNav 
+          <LeftNav 
             open={ this.state.open } 
             requestChange={ this.handleRequestChange }
             />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Toolbar from 'material-ui/lib/toolbar/toolbar'
+import { Toolbar } from 'material-ui/Toolbar'
 import LeftGroup from './components/LeftGroup'
 import RightGroup from './components/RightGroup'
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import LeftNav from 'material-ui/lib/left-nav'
-import Divider from 'material-ui/lib/divider'
-import MenuItem from 'material-ui/lib/menus/menu-item'
+import Drawer from 'material-ui/Drawer'
+import Divider from 'material-ui/Divider'
+import MenuItem from 'material-ui/MenuItem'
 
-class AppLeftNav extends Component {
+class LeftNav extends Component {
   render() {
     const { open, requestChange } = this.props
     return (
-      <LeftNav
+      <Drawer
         open={open}
         docked={false}
         onRequestChange={ requestChange }
@@ -22,9 +22,9 @@ class AppLeftNav extends Component {
         <MenuItem>UWP </MenuItem>
         <Divider />
         <MenuItem>HTML / JavaScript </MenuItem>
-      </LeftNav>
+      </Drawer>
     )
   }
 }
 
-export default AppLeftNav
+export default LeftNav

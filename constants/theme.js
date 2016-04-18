@@ -1,5 +1,5 @@
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme'
-import { indigo600, white } from 'material-ui/lib/styles/colors'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import { indigo600, white } from 'material-ui/styles/colors'
 
 const myTheme = {
   // fontFamily: 'Roboto, Noto Sans S Chinese',

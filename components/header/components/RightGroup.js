@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group'
-import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator'
-import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title'
-import IconButton from 'material-ui/lib/icon-button'
-import FontIcon from 'material-ui/lib/font-icon'
-import { white } from 'material-ui/lib/styles/colors'
+import IconButton from 'material-ui/IconButton'
+import FontIcon from 'material-ui/FontIcon'
+import { white } from 'material-ui/styles/colors'
 
+import { 
+  ToolbarGroup,
+  ToolbarSeparator,
+  ToolbarTitle
+} from 'material-ui/Toolbar'
 
 class RightGroup extends Component { 
   render() {

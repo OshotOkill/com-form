@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import AppBar from 'material-ui/lib/app-bar'
-import TextField from 'material-ui/lib/text-field'
-import RaisedButton from 'material-ui/lib/raised-button'
+import AppBar from 'material-ui/AppBar'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
 import pic1 from '../../public/imgs/01.jpg'
 
 class Footer extends Component {

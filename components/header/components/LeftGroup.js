@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group'
-import ToolbarSeparator from 'material-ui/lib/toolbar/toolbar-separator'
-import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title'
-import NavigationMenu from 'material-ui/lib/svg-icons/navigation/menu'
-import IconButton from 'material-ui/lib/icon-button'
-import Home from 'material-ui/lib/svg-icons/action/home'
-import { white } from 'material-ui/lib/styles/colors'
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
+import IconButton from 'material-ui/IconButton'
+import Home from 'material-ui/svg-icons/action/home'
+import { white } from 'material-ui/styles/colors'
 
+import { 
+  ToolbarGroup,
+  ToolbarSeparator,
+  ToolbarTitle
+} from 'material-ui/Toolbar'
 
 class LeftGroup extends Component {
   render() {
