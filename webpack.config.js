@@ -17,6 +17,9 @@ module.exports = {
   },
   
   plugins: [
+    // new webpack.ProvidePlugin({
+    //   io: 'socket.io-client'
+    // }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
@@ -24,7 +27,7 @@ module.exports = {
     
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /(node_modules)|(socket-io.js)/, loader: 'babel' },
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' },
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.(png|jpg)$/, loader: 'url?limit=4096' },
       { test: /\.svg/, loader: 'url?limit=4096' },
@@ -34,5 +37,5 @@ module.exports = {
   
   resolve: {
     extensions: ['', '.js', '.jsx']
-  }
+  },
 }

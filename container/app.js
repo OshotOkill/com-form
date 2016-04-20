@@ -8,8 +8,10 @@ import { Header, LeftNav, Content, Footer, Chat } from '../components'
 import Theme from '../constants/theme'
 import * as actionCreators from '../actions'
 
+import io from 'socket.io-client'
 import '../public/css/global.css'
 import '../public/css/materialdesignicons.min.css'
+
 
 class App extends Component {
   constructor(props, context) {
@@ -24,6 +26,9 @@ class App extends Component {
   
   componentDidMount() {
     this.socket = io()
+    
+    this.socket.on('message', data => console.log(data))
+    
     this.socket.on('newMessage', message => {
       console.log('success')
       this.setState({

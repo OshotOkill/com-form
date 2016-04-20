@@ -19,12 +19,12 @@ app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.html`)
 })
 
-app.listen(port, (err) => {
+http.listen(port, err => {
   err ? console.log(err) : console.log('listening port 3000')
 })
 
 io.on('connection', socket => {
-  io.emit('message', 'connected')
+  socket.emit('message', 'Socket.io standing by')
   
   socket.on('newMessage', message => {
     socket.emit('newMessage', message)
