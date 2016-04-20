@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import Paper from 'material-ui/Paper'
 
-
 class Message extends Component {
   render() {
-    const { text } = this.props
+    const { message } = this.props
     return (
       <Paper>
-        {text}
+        {message}
       </Paper>
     )
   }

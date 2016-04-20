@@ -8,7 +8,9 @@ const express = require('express'),
       port = 3000,
       compiler = webpack(config);
       
-const io = require('socket.io')(app);
+const http = require('http').Server(app),
+      fs = require('fs'),
+      io = require('socket.io')(http);
 
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
 app.use(webpackHotMiddleware(compiler))
@@ -22,7 +24,12 @@ app.listen(port, (err) => {
 })
 
 io.on('connection', socket => {
-  socket.emit('message', { connected: 'YES' })
+  io.emit('message', 'connected')
+  
+  socket.on('newMessage', message => {
+    socket.emit('newMessage', message)
+  })
+  
   socket.on('disconnect', () => console.log('Disconnect!'))
 })
 

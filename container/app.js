@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import io from 'socket.io'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { Header, LeftNav, Content, Footer, Chat } from '../components'
@@ -19,13 +18,18 @@ class App extends Component {
       open: false,
       messages: []
     }
-    this.socket = io.connect('http://localhost')
     this.handleToggle = this.handleToggle.bind(this)
     this.handleRequestChange = this.handleRequestChange.bind(this)
   }
   
   componentDidMount() {
-    this.socket.on('message', () => console.log(data.connected))
+    this.socket = io()
+    this.socket.on('newMessage', message => {
+      console.log('success')
+      this.setState({
+        message: this.state.message.push(message)
+      })
+    })
   }
   
   getChildContext() {
@@ -55,7 +59,7 @@ class App extends Component {
             />
           <Content cards={cards} />
           <Footer actions={actions} />
-          <Chat messages={ this.state.messages } />
+          {/* <Chat messages={ this.state.messages } />*/}
         </div>
       </MuiThemeProvider>
     )
