@@ -8,10 +8,10 @@ import { Header, LeftNav, Content, Footer, Chat } from '../components'
 import Theme from '../constants/theme'
 import * as actionCreators from '../actions'
 
-import io from 'socket.io-client'
 import '../public/css/global.css'
 import '../public/css/materialdesignicons.min.css'
 
+const socket = io()
 
 class App extends Component {
   constructor(props, context) {
@@ -24,21 +24,19 @@ class App extends Component {
     this.handleRequestChange = this.handleRequestChange.bind(this)
   }
   
-  componentDidMount() {
-    this.socket = io()
+  componentDidMount() {    
+    socket.on('message', data => console.log(data))
     
-    this.socket.on('message', data => console.log(data))
-    
-    this.socket.on('newMessage', message => {
-      console.log('success')
-      this.setState({
-        message: this.state.message.push(message)
-      })
+    socket.on('newMessage', text => {
+      const messages = this.state.messages
+      messages.push(text)    
+      this.setState({ messages })
     })
   }
   
   getChildContext() {
     return {
+      socket: socket,
       Toggle: this.handleToggle
     }
   }
@@ -64,7 +62,7 @@ class App extends Component {
             />
           <Content cards={cards} />
           <Footer actions={actions} />
-          {/* <Chat messages={ this.state.messages } />*/}
+          <Chat messages={ this.state.messages } />
         </div>
       </MuiThemeProvider>
     )
@@ -72,6 +70,7 @@ class App extends Component {
 }
 
 App.childContextTypes = {
+  socket: React.PropTypes.object,
   Toggle: React.PropTypes.func
 }
 

@@ -27,7 +27,7 @@ io.on('connection', socket => {
   socket.emit('message', 'Socket.io standing by')
   
   socket.on('newMessage', message => {
-    socket.emit('newMessage', message)
+    socket.emit('newMessage', message)          
   })
   
   socket.on('disconnect', () => console.log('Disconnect!'))
