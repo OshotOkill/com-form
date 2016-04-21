@@ -36,7 +36,7 @@ class App extends Component {
   
   getChildContext() {
     return {
-      socket: socket,
+      socket,
       Toggle: this.handleToggle
     }
   }

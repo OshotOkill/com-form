@@ -4,8 +4,11 @@
   "description": "demo",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "material-ui": "^0.15.0-alpha.2",
+    "node-mysql": "^0.4.2",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
