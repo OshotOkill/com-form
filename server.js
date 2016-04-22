@@ -1,26 +1,36 @@
 const webpack = require('webpack'),
       webpackDevMiddleware = require('webpack-dev-middleware'),
       webpackHotMiddleware = require('webpack-hot-middleware'),
-      config = require('./webpack.config');
+      config = require('./webpack.config'),
+      compiler = webpack(config);
 
 const express = require('express'),
       app = express(),
-      port = 3000,
-      compiler = webpack(config);
+      port = 3000;
       
 const http = require('http').Server(app),
+      io = require('socket.io')(http),
       fs = require('fs'),
-      io = require('socket.io')(http);
+      path = require('path');
+
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
 app.use(webpackHotMiddleware(compiler))
 
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/index.html`)
+app.use('/', express.static(path.join(__dirname)))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(cookieParser())
+
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache')
+  next()
 })
 
-http.listen(port, err => {
-  err ? console.log(err) : console.log('listening port 3000')
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/index.html`)
 })
 
 io.on('connection', socket => {
@@ -33,3 +43,6 @@ io.on('connection', socket => {
   socket.on('disconnect', () => console.log('Disconnect!'))
 })
 
+http.listen(port, err => {
+  err ? console.log(err) : console.log('listening port 3000')
+})

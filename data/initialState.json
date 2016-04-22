@@ -1,0 +1,47 @@
+{
+  "cards": [
+    {
+      "id": 0,
+
+      "cardHeader": {
+        "title": "第一个卡片",
+        "subtitle": "This is the first card",
+        "avatar": ""
+      },
+
+      "cardMedia": {
+        "overlay": {
+          "title": "第一个卡片",
+          "subtitle": "This is the first card",
+          "image": "<img src={pic1} />"
+        }
+      },
+
+      "cardText": "First wave",
+
+      "cardAction": "<RaisedButton label='hello' primary={true} />"
+    },
+
+    {
+      "id": 1,
+
+      "cardHeader": {
+        "title": "第二个卡片",
+        "subtitle": "This is the second card",
+        "avatar": ""
+      },
+
+      "cardMedia": {
+        "overlay": {
+          "title": "第二个卡片",
+          "subtitle": "This is the second card",
+          "image": "<img src={pic2} />"
+        }
+      },
+
+      "cardText": "Second wave",
+
+      "cardAction": null
+    }
+  ]
+}

@@ -22,6 +22,9 @@ class Footer extends Component {
   }
   
   handleClick(e) {
+    if (!this.state.value) {
+      return
+    }
     const { actions } = this.props
     
     const cardConfigs = { 
