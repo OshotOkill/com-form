@@ -33,6 +33,16 @@ app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.html`)
 })
 
+app.get('/data/initialState', (req, res) => {
+  fs.readFile(`${__dirname}/data/initialState.json`, (err, data) => {
+    if (err) {
+      console.error(err)
+      process.exit(1)
+    }
+    res.json(JSON.parse(data))
+  })
+})
+
 io.on('connection', socket => {
   socket.emit('message', 'Socket.io standing by')
   
