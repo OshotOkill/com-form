@@ -17,12 +17,40 @@ export function deleteCard(id) {
   }
 }
 
-export function fetchData(initalState) {
+export function receiveData(json) {
+  return {
+    type: RECEIVE_DATA,
+    data: json.cards.map(card => card)
+  }
+}
+
+export function fetchData() {
   return dispatch => {
-    fetch(`http://localhost:3000/data/${initialState}.json`)
-      .then(res => res.json())
-      .then(json => dispatch(addCard(json)))
-      .catch(err => console.error(err))
+    fetch(`http://localhost:3000/data/initalState.json`)
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error('Connection failed')
+        }
+        return res.json()
+      })
+      .then(json => dispatch(receiveData(json)))
+      .catch(err => console.error(`error code:${err.status}`))
+  }
+}
+
+export function postData(value) {
+  return dispatch => {
+    fetch(`http://localhost:3000/data/initalState.json`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        value
+      })
+    })
+      .then(json => dispatch(receiveData(json)))
   }
 }
 

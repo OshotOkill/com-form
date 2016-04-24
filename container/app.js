@@ -60,7 +60,7 @@ class App extends Component {
             open={ this.state.open } 
             requestChange={ this.handleRequestChange }
             />
-          <Content cards={cards} />
+          <Content cards={cards} actions={actions}/>
           <Footer actions={actions} />
           <Chat messages={ this.state.messages } />
         </div>

@@ -7,7 +7,7 @@ const webpack = require('webpack'),
 const express = require('express'),
       app = express(),
       port = 3000;
-      
+
 const http = require('http').Server(app),
       io = require('socket.io')(http),
       fs = require('fs'),
@@ -21,7 +21,7 @@ app.use(webpackHotMiddleware(compiler))
 
 app.use('/', express.static(path.join(__dirname)))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 app.use((req, res, next) => {
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/data/initialState', (req, res) => {
-  fs.readFile(`${__dirname}/data/initialState.json`, (err, data) => {
+  fs.readFile('/data/initialState.json', (err, data) => {
     if (err) {
       console.error(err)
       process.exit(1)
@@ -43,13 +43,54 @@ app.get('/data/initialState', (req, res) => {
   })
 })
 
+app.post('/data/initialState', (req, res) => {
+  fs.readFile('/data/initialState', (err, data) => {
+    if (err) {
+      console.error(err)
+      process.exit(1)
+    }
+    const { value } = req.body
+    const state = JSON.parse(data)
+    const cards = state.cards
+    const newCards = cards.push({
+      id: cards.reduce((prev, cur) => Math.max(prev, cur.id), -1) + 1,
+
+      cardHeader: {
+        title: value,
+        subtitle: value,
+        avatar: value
+      },
+
+      cardMedia: {
+        overlay: {
+          title: value,
+          subtitle: value,
+          image: value
+        }
+      },
+
+      cardText: value,
+
+      cardAction: value
+    })
+    
+    fs.writeFile('/data/initialState', JSON.stringify(newCards, null, 2), err => {
+      if (err) {
+        console.error(err)
+        process.exit(1)
+      }
+      res.json(newCards)
+    })
+  })
+})
+
 io.on('connection', socket => {
   socket.emit('message', 'Socket.io standing by')
-  
+
   socket.on('newMessage', message => {
-    socket.emit('newMessage', message)          
+    socket.emit('newMessage', message)
   })
-  
+
   socket.on('disconnect', () => console.log('Disconnect!'))
 })
 
