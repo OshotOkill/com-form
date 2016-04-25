@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   
@@ -36,4 +36,4 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-}
+};

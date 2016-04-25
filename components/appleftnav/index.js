@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import Drawer from 'material-ui/Drawer'
-import Divider from 'material-ui/Divider'
-import MenuItem from 'material-ui/MenuItem'
+import React, { Component } from 'react';
+import Drawer from 'material-ui/Drawer';
+import Divider from 'material-ui/Divider';
+import MenuItem from 'material-ui/MenuItem';
 
 class LeftNav extends Component {
   render() {
-    const { open, requestChange } = this.props
+    const { open, requestChange } = this.props;
     return (
       <Drawer
         open={open}
@@ -27,4 +27,4 @@ class LeftNav extends Component {
   }
 }
 
-export default LeftNav
+export default LeftNav;

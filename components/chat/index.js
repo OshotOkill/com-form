@@ -5,27 +5,27 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 class Chat extends Component {
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
     this.state = {
       value: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   handleChange(e) {
-    this.setState({value: e.target.value})
+    this.setState({value: e.target.value});
   }
   
   handleSubmit() {
-    const { socket } = this.context
-    console.log(this.state.value)
-    socket.emit('newMessage', this.state.value)
-    this.setState({value: ''})
+    const { socket } = this.context;
+    console.log(this.state.value);
+    socket.emit('newMessage', this.state.value);
+    this.setState({value: ''});
   }
   
   render() {
-    const { messages } = this.props
+    const { messages } = this.props;
     return (
       <div>
         {messages.map(message =>
@@ -43,4 +43,4 @@ Chat.contextTypes = {
   Toggle: React.PropTypes.func
 }
 
-export default Chat
+export default Chat;

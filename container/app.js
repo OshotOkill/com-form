@@ -1,36 +1,36 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import { Header, LeftNav, Content, Footer, Chat } from '../components'
-import Theme from '../constants/theme'
-import * as actionCreators from '../actions'
+import { Header, LeftNav, Content, Footer, Chat } from '../components';
+import Theme from '../constants/theme';
+import * as actionCreators from '../actions';
 
-import '../public/css/global.css'
-import '../public/css/materialdesignicons.min.css'
+import '../public/css/global.css';
+import '../public/css/materialdesignicons.min.css';
 
-const socket = io()
+const socket = io();
 
 class App extends Component {
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
     this.state = {
       open: false,
       messages: []
-    }
-    this.handleToggle = this.handleToggle.bind(this)
-    this.handleRequestChange = this.handleRequestChange.bind(this)
+    };
+    this.handleToggle = this.handleToggle.bind(this);
+    this.handleRequestChange = this.handleRequestChange.bind(this);
   }
   
   componentDidMount() {    
-    socket.on('message', data => console.log(data))
+    socket.on('message', data => console.log(data));
     
     socket.on('newMessage', text => {
       const messages = this.state.messages
-      messages.push(text)    
-      this.setState({ messages })
+      messages.push(text);
+      this.setState({ messages });
     })
   }
   
@@ -42,15 +42,15 @@ class App extends Component {
   }
 
   handleToggle() {
-    this.setState({ open: !this.state.open })
+    this.setState({ open: !this.state.open });
   }
   
   handleRequestChange(open) {
-    this.setState({ open })
+    this.setState({ open });
   }
   
   render() {
-    const { cards, actions } = this.props
+    const { cards, actions } = this.props;
     
     return (
       <MuiThemeProvider muiTheme={ Theme }>
@@ -72,7 +72,7 @@ class App extends Component {
 App.childContextTypes = {
   socket: React.PropTypes.object,
   Toggle: React.PropTypes.func
-}
+};
 
 function mapStateToProps(state) {
   return {
@@ -86,4 +86,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

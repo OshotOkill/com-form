@@ -1,7 +1,7 @@
-import fetch from 'isomorphic-fetch'
-import * as actionTypes from '../constants/actionTypes'
+import fetch from 'isomorphic-fetch';
+import * as actionTypes from '../constants/actionTypes';
 
-const { ADD_CARD, DELETE_CARD } = actionTypes
+const { ADD_CARD, DELETE_CARD } = actionTypes;
 
 export function addCard(cardConfigs) {
   return {
@@ -20,7 +20,7 @@ export function deleteCard(id) {
 export function receiveData(json) {
   return {
     type: RECEIVE_DATA,
-    data: json.cards.map(card => card)
+    data: json.cards
   }
 }
 
@@ -29,9 +29,9 @@ export function fetchData() {
     fetch(`http://localhost:3000/data/initalState.json`)
       .then(res => {
         if (res.status >= 400) {
-          throw new Error('Connection failed')
+          throw new Error('Connection failed');
         }
-        return res.json()
+        return res.json();
       })
       .then(json => dispatch(receiveData(json)))
       .catch(err => console.error(`error code:${err.status}`))

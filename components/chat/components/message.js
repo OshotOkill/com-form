@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import Paper from 'material-ui/Paper'
+import React, { Component } from 'react';
+import Paper from 'material-ui/Paper';
 
 class Message extends Component {
   render() {
-    const { message } = this.props
+    const { message } = this.props;
     return (
       <Paper>
         {message}
@@ -12,4 +12,4 @@ class Message extends Component {
   }
 }
 
-export default Message
+export default Message;

@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
-import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
-import IconButton from 'material-ui/IconButton'
-import Home from 'material-ui/svg-icons/action/home'
-import { white } from 'material-ui/styles/colors'
+import React, { Component } from 'react';
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
+import IconButton from 'material-ui/IconButton';
+import Home from 'material-ui/svg-icons/action/home';
+import { white } from 'material-ui/styles/colors';
 
 import { 
   ToolbarGroup,
   ToolbarSeparator,
   ToolbarTitle
-} from 'material-ui/Toolbar'
+} from 'material-ui/Toolbar';
 
 class LeftGroup extends Component {
   render() {
-    const { Toggle } = this.context
+    const { Toggle } = this.context;
     
     return (
       <ToolbarGroup float="left">
@@ -35,6 +35,6 @@ class LeftGroup extends Component {
 
 LeftGroup.contextTypes = {
   Toggle: React.PropTypes.func
-}
+};
 
-export default LeftGroup
+export default LeftGroup;
