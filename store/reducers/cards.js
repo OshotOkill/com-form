@@ -1,10 +1,10 @@
 import * as actionTypes from '../../constants/actionTypes';
 import pic1 from '../../public/imgs/01.jpg';
 
-const { ADD_CARD, DELETE_CARD } = actionTypes;
+const { ADD_CARD, DELETE_CARD, RECEIVE_DATA } = actionTypes;
 
 function cards(state = [], action) {
-  const { id, cardConfigs } = action;
+  const { id, cardConfigs, data } = action;
 
   switch (action.type) {
     case ADD_CARD:
@@ -39,6 +39,9 @@ function cards(state = [], action) {
         card.id !== id
       )
 
+    case RECEIVE_DATA:
+      return data
+      
     default:
       return state
   }

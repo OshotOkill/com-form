@@ -49,10 +49,9 @@ app.post('/data/initialState', (req, res) => {
       console.error(err);
       process.exit(1);
     }
-    const { cardConfigs } = req.body;
     const state = JSON.parse(data);
     const cards = state.cards;
-    const newCards = cards.push(cardConfigs);
+    const newCards = cards.push(req.body.cardConfigs);
     
     fs.writeFile('/data/initialState', JSON.stringify(newCards, null, 2), err => {
       if (err) {

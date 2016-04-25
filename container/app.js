@@ -24,7 +24,9 @@ class App extends Component {
     this.handleRequestChange = this.handleRequestChange.bind(this);
   }
   
-  componentDidMount() {    
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.fetchData();
     socket.on('message', data => console.log(data));
     
     socket.on('newMessage', text => {
@@ -60,7 +62,7 @@ class App extends Component {
             open={ this.state.open } 
             requestChange={ this.handleRequestChange }
             />
-          <Content cards={cards} actions={actions}/>
+          <Content cards={cards} actions={actions} />
           <Footer actions={actions} />
           <Chat messages={ this.state.messages } />
         </div>

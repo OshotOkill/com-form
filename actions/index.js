@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import * as actionTypes from '../constants/actionTypes';
 
-const { ADD_CARD, DELETE_CARD } = actionTypes;
+const { ADD_CARD, DELETE_CARD, RECEIVE_DATA } = actionTypes;
 
 export function addCard(cardConfigs) {
   return {
@@ -26,7 +26,7 @@ export function receiveData(json) {
 
 export function fetchData() {
   return dispatch => {
-    return fetch(`http://localhost:3000/data/initalState.json`)
+    return fetch('/data/initialState.json')
       .then(res => {
         if (res.status >= 400) {
           throw new Error('Connection failed');
@@ -40,19 +40,24 @@ export function fetchData() {
 
 export function postData(cardConfigs) {
   return dispatch => {
-    dispatch(addCard(cardConfigs));  
-    return fetch(`http://localhost:3000/data/initalState.json`, {
+    dispatch(addCard(cardConfigs));
+    return fetch('/data/initialState.json', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        // 'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         cardConfigs
       })
     })
-      // .then(json => dispatch(receiveData(json)))
-      .catch(err => console.error(`error code:${err.status}`));
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error('Connection failed');
+        }
+      })
+      .then(json => dispatch(receiveData(json)))
+      .catch(err => console.error(err));
   }
 }
 

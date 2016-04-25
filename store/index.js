@@ -3,12 +3,12 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from './reducers';
 
-function configStore(initalState) {
+function configStore(initialState) {
   return createStore(
     rootReducer, 
-    initalState,
+    initialState,
     applyMiddleware(
-      thunkMiddlware,
+      thunkMiddleware,
       createLogger()
     )
   )
