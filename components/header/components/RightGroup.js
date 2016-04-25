@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import IconButton from 'material-ui/IconButton'
-import FontIcon from 'material-ui/FontIcon'
-import { white } from 'material-ui/styles/colors'
+import React, { Component } from 'react';
+import IconButton from 'material-ui/IconButton';
+import FontIcon from 'material-ui/FontIcon';
+import { white } from 'material-ui/styles/colors';
 
 import { 
   ToolbarGroup,
   ToolbarSeparator,
   ToolbarTitle
-} from 'material-ui/Toolbar'
+} from 'material-ui/Toolbar';
 
 class RightGroup extends Component { 
   render() {
@@ -44,4 +44,4 @@ class RightGroup extends Component {
   }
 }
 
-export default RightGroup
+export default RightGroup;

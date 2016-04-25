@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import Essay from './components/essay'
+import React, { Component } from 'react';
+import Essay from './components/essay';
 
 class Content extends Component {
   render() {
-    const { cards } = this.props
+    const { cards } = this.props;
     return (
       <div>
         {cards.map(essay => 
@@ -14,4 +14,4 @@ class Content extends Component {
   }
 }
 
-export default Content
+export default Content;

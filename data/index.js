@@ -1,7 +1,7 @@
-import React from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
-import pic1 from '../public/imgs/01.jpg'
-import pic2 from '../public/imgs/02.jpg'
+import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import pic1 from '../public/imgs/01.jpg';
+import pic2 from '../public/imgs/02.jpg';
 
 const initialState = {
 
@@ -51,6 +51,6 @@ const initialState = {
     }
   ]
 
-}
+};
 
-export default initialState
+export default initialState;

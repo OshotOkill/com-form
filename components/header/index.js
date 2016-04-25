@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Toolbar } from 'material-ui/Toolbar'
-import LeftGroup from './components/LeftGroup'
-import RightGroup from './components/RightGroup'
+import React, { Component } from 'react';
+import { Toolbar } from 'material-ui/Toolbar';
+import LeftGroup from './components/LeftGroup';
+import RightGroup from './components/RightGroup';
 
 class Header extends Component {
   render() {
@@ -14,4 +14,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default Header;

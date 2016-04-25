@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import Message from './components/message'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
+import React, { Component } from 'react';
+import Message from './components/message';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Chat extends Component {
   constructor(props, context) {

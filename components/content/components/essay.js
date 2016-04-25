@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 import { 
   Card,
@@ -7,12 +7,12 @@ import {
   CardMedia,
   CardTitle,
   CardText
-} from 'material-ui/Card'
+} from 'material-ui/Card';
 
 
 class Essay extends Component {
   render() {
-    const { cardHeader, cardMedia, cardText, cardAction } = this.props
+    const { cardHeader, cardMedia, cardText, cardAction } = this.props;
     
     return (
         <Card style={{ width: '900px', height: 'auto', margin: '100px auto' }}>
@@ -38,4 +38,4 @@ class Essay extends Component {
   }
 }
 
-export default Essay
+export default Essay;

@@ -1,5 +1,5 @@
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { indigo600, white } from 'material-ui/styles/colors'
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { indigo600, white } from 'material-ui/styles/colors';
 
 const myTheme = {
   // fontFamily: 'Roboto, Noto Sans S Chinese',
@@ -20,8 +20,8 @@ const myTheme = {
     iconColor: white,
     titleFontSize: 17
   }
-}
+};
 
-const Theme = getMuiTheme(myTheme)
+const Theme = getMuiTheme(myTheme);
 
-export default Theme
+export default Theme;

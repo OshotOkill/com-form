@@ -1,31 +1,30 @@
-import React, { Component } from 'react'
-import AppBar from 'material-ui/AppBar'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
-import pic1 from '../../public/imgs/01.jpg'
+import React, { Component } from 'react';
+import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import pic1 from '../../public/imgs/01.jpg';
 
 class Footer extends Component {
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
     this.state = {
       value: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   
   handleChange(e) {
     this.setState({
       value: e.target.value
-    })
-    
+    });   
   }
   
   handleClick(e) {
     if (!this.state.value) {
-      return
+      return;
     }
-    const { actions } = this.props
+    const { actions } = this.props;
     
     const cardConfigs = { 
       cardHeader: {
@@ -45,17 +44,17 @@ class Footer extends Component {
       cardText: this.state.value,
       
       cardAction: ''
-    }
+    };
     
-    actions.addCard(cardConfigs)
+    actions.addCard(cardConfigs);
     
     this.setState({
       value: ''
-    })
+    });
   }
   
   render() {
-    const { actions } = this.props
+    const { actions } = this.props;
     
     return (
       <div> 
@@ -71,4 +70,4 @@ class Footer extends Component {
   }
 }
 
-export default Footer
+export default Footer;
