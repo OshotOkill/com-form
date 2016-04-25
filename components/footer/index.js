@@ -46,7 +46,7 @@ class Footer extends Component {
       cardAction: ''
     };
     
-    actions.addCard(cardConfigs);
+    actions.postData(cardConfigs);
     
     this.setState({
       value: ''

@@ -49,37 +49,17 @@ app.post('/data/initialState', (req, res) => {
       console.error(err);
       process.exit(1);
     }
-    const { value } = req.body;
+    const { cardConfigs } = req.body;
     const state = JSON.parse(data);
     const cards = state.cards;
-    const newCards = cards.push({
-      id: cards.reduce((prev, cur) => Math.max(prev, cur.id), -1) + 1,
-
-      cardHeader: {
-        title: value,
-        subtitle: value,
-        avatar: value
-      },
-
-      cardMedia: {
-        overlay: {
-          title: value,
-          subtitle: value,
-          image: value
-        }
-      },
-
-      cardText: value,
-
-      cardAction: value
-    });
+    const newCards = cards.push(cardConfigs);
     
     fs.writeFile('/data/initialState', JSON.stringify(newCards, null, 2), err => {
       if (err) {
         console.error(err);
         process.exit(1);
       }
-      res.json(newCards);
+      // res.json(newCards);
     });
   });
 });

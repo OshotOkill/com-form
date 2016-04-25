@@ -28,7 +28,7 @@ class App extends Component {
     socket.on('message', data => console.log(data));
     
     socket.on('newMessage', text => {
-      const messages = this.state.messages
+      const messages = this.state.messages;
       messages.push(text);
       this.setState({ messages });
     })

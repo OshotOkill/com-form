@@ -26,7 +26,7 @@ export function receiveData(json) {
 
 export function fetchData() {
   return dispatch => {
-    fetch(`http://localhost:3000/data/initalState.json`)
+    return fetch(`http://localhost:3000/data/initalState.json`)
       .then(res => {
         if (res.status >= 400) {
           throw new Error('Connection failed');
@@ -34,23 +34,25 @@ export function fetchData() {
         return res.json();
       })
       .then(json => dispatch(receiveData(json)))
-      .catch(err => console.error(`error code:${err.status}`))
+      .catch(err => console.error(`error code:${err.status}`));
   }
 }
 
-export function postData(value) {
+export function postData(cardConfigs) {
   return dispatch => {
-    fetch(`http://localhost:3000/data/initalState.json`, {
+    dispatch(addCard(cardConfigs));  
+    return fetch(`http://localhost:3000/data/initalState.json`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        value
+        cardConfigs
       })
     })
-      .then(json => dispatch(receiveData(json)))
+      // .then(json => dispatch(receiveData(json)))
+      .catch(err => console.error(`error code:${err.status}`));
   }
 }
 
