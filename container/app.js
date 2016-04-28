@@ -52,7 +52,7 @@ class App extends Component {
   }
   
   render() {
-    const { cards, actions } = this.props;
+    const { cards, count, actions } = this.props;
     
     return (
       <MuiThemeProvider muiTheme={ Theme }>
@@ -63,7 +63,7 @@ class App extends Component {
             requestChange={ this.handleRequestChange }
             />
           <Content cards={cards} actions={actions} />
-          <Footer actions={actions} />
+          <Footer actions={actions} count={count} />
           <Chat messages={ this.state.messages } />
         </div>
       </MuiThemeProvider>
@@ -78,7 +78,8 @@ App.childContextTypes = {
 
 function mapStateToProps(state) {
   return {
-    cards: state.cards
+    cards: state.cards,
+    count: state.cards.length
   }
 }
 

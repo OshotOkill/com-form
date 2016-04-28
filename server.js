@@ -54,13 +54,12 @@ app.post('/data/initialState', (req, res) => {
     }
     const state = JSON.parse(data);
     state.cards.push(req.body.cardConfigs);
-    
     fs.writeFile(DATA_FILE, JSON.stringify(state, null, 2), err => {
       if (err) {
         console.error(err);
         process.exit(1);
       }
-      res.status(200);
+      res.json(state);
     });
   });
 });

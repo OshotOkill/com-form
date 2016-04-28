@@ -24,9 +24,11 @@ class Footer extends Component {
     if (!this.state.value) {
       return;
     }
-    const { actions } = this.props;
+    const { actions, count } = this.props;
     
-    const cardConfigs = { 
+    const cardConfigs = {
+      id: count,
+       
       cardHeader: {
         title: this.state.value,
         subtitle: this.state.value,
@@ -45,7 +47,7 @@ class Footer extends Component {
       
       cardAction: ''
     };
-    
+
     actions.postData(cardConfigs);
     
     this.setState({

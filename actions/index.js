@@ -17,10 +17,10 @@ export function deleteCard(id) {
   }
 }
 
-export function receiveData(json) {
+export function receiveData(data) {
   return {
     type: RECEIVE_DATA,
-    data: json.cards
+    data
   }
 }
 
@@ -33,7 +33,7 @@ export function fetchData() {
         }
         return res.json();
       })
-      .then(json => dispatch(receiveData(json)))
+      .then(data => dispatch(receiveData(data.cards)))
       .catch(err => console.error(err));
   }
 }
@@ -70,9 +70,9 @@ export function postData(cardConfigs) {
         'Content-Type': 'application/json'
       },
       mode: 'cors',
-      body: {
-        cardConfigs: JSON.stringify(cardConfigs)
-      }
+      body: JSON.stringify({
+        cardConfigs
+      })
     })
       .then(res => {
         if (res.status >= 400) {
@@ -80,7 +80,7 @@ export function postData(cardConfigs) {
         }
         return res.json()
       })
-      .then(json => dispatch(receiveData(json)))
+      .then(data => dispatch(receiveData(data.cards)))
       .catch(err => console.error(err));
     
     // return dispatch(addCard(cardConfigs));
