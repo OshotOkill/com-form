@@ -15,7 +15,7 @@
         }
       },
       "cardText": "First wave",
-      "cardAction": "<RaisedButton label='hello' primary={true} />"
+      "cardAction": "hello"
     },
     {
       "id": 1,
@@ -32,41 +32,7 @@
         }
       },
       "cardText": "Second wave",
-      "cardAction": null
-    },
-    {
-      "id": 2,
-      "cardHeader": {
-        "title": "asdf",
-        "subtitle": "asdf",
-        "avatar": ""
-      },
-      "cardMedia": {
-        "overlay": {
-          "title": "asdf",
-          "subtitle": "asdf",
-          "imageURL": "/public/imgs/01.jpg"
-        }
-      },
-      "cardText": "asdf",
-      "cardAction": ""
-    },
-    {
-      "id": 2,
-      "cardHeader": {
-        "title": "asdf",
-        "subtitle": "asdf",
-        "avatar": ""
-      },
-      "cardMedia": {
-        "overlay": {
-          "title": "asdf",
-          "subtitle": "asdf",
-          "imageURL": "/public/imgs/01.jpg"
-        }
-      },
-      "cardText": "asdf",
-      "cardAction": ""
+      "cardAction": "hi"
     }
   ]
 }

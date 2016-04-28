@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RaisedButton from 'material-ui/RaisedButton'
 
 import { 
   Card,
@@ -31,7 +32,7 @@ class Essay extends Component {
             { cardText }
           </CardText>
           <CardActions expandable={true}>
-            { cardAction }
+            <RaisedButton label={cardAction} primary={true} />
           </CardActions>
         </Card>
     );
