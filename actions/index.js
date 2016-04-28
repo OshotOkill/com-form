@@ -26,7 +26,7 @@ export function receiveData(json) {
 
 export function fetchData() {
   return dispatch => {
-    return fetch('/data/initialState.json')
+    return fetch('/data/initialState')
       .then(res => {
         if (res.status >= 400) {
           throw new Error('Connection failed');
@@ -34,30 +34,55 @@ export function fetchData() {
         return res.json();
       })
       .then(json => dispatch(receiveData(json)))
-      .catch(err => console.error(`error code:${err.status}`));
+      .catch(err => console.error(err));
   }
 }
 
+// export function postData(cardConfigs) {
+//   return dispatch => {
+//     fetch('/data/initialState.json', {
+//       method: 'POST',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       mode: 'cors',
+//       body: JSON.stringify(cardConfigs)
+//     })
+//       .then(res => {
+//         if (res.status >= 400) {
+//           throw new Error('Connection failed');
+//         }
+//         // return res.json()
+//       })
+//       .catch(err => console.error(err));
+    
+//     return dispatch(addCard(cardConfigs));
+//   }
+// }
+
 export function postData(cardConfigs) {
   return dispatch => {
-    dispatch(addCard(cardConfigs));
-    return fetch('/data/initialState.json', {
+    return fetch('/data/initialState', {
       method: 'POST',
       headers: {
-        // 'Accept': 'application/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        cardConfigs
-      })
+      mode: 'cors',
+      body: {
+        cardConfigs: JSON.stringify(cardConfigs)
+      }
     })
       .then(res => {
         if (res.status >= 400) {
           throw new Error('Connection failed');
         }
+        return res.json()
       })
       .then(json => dispatch(receiveData(json)))
       .catch(err => console.error(err));
+    
+    // return dispatch(addCard(cardConfigs));
   }
 }
-

@@ -16,6 +16,8 @@ const http = require('http').Server(app),
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+const DATA_FILE = path.join(__dirname, 'data', 'initialState.json');
+
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
 
@@ -25,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 'no-cache');
   next();
 });
@@ -34,7 +37,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/data/initialState', (req, res) => {
-  fs.readFile('/data/initialState.json', (err, data) => {
+  fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error(err);
       process.exit(1);
@@ -44,21 +47,20 @@ app.get('/data/initialState', (req, res) => {
 });
 
 app.post('/data/initialState', (req, res) => {
-  fs.readFile('/data/initialState', (err, data) => {
+  fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
-      console.error(err);
+      console.error('POST ERRROR:', err);
       process.exit(1);
     }
     const state = JSON.parse(data);
-    const cards = state.cards;
-    const newCards = cards.push(req.body.cardConfigs);
+    state.cards.push(req.body.cardConfigs);
     
-    fs.writeFile('/data/initialState', JSON.stringify(newCards, null, 2), err => {
+    fs.writeFile(DATA_FILE, JSON.stringify(state, null, 2), err => {
       if (err) {
         console.error(err);
         process.exit(1);
       }
-      // res.json(newCards);
+      res.status(200);
     });
   });
 });
