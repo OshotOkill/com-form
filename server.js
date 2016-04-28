@@ -59,7 +59,7 @@ app.post('/data/initialState', (req, res) => {
         console.error(err);
         process.exit(1);
       }
-      res.json(state);
+      // res.json(state);
     });
   });
 });

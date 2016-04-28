@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import pic1 from '../../public/imgs/01.jpg';
 
 class Footer extends Component {
   constructor(props, context) {
@@ -39,7 +38,7 @@ class Footer extends Component {
         overlay: {
           title: this.state.value,
           subtitle: this.state.value,
-          image: <img src={pic1} />
+          imageURL: '/public/imgs/01.jpg'
         }
       },
       

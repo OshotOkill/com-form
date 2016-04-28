@@ -38,32 +38,9 @@ export function fetchData() {
   }
 }
 
-// export function postData(cardConfigs) {
-//   return dispatch => {
-//     fetch('/data/initialState.json', {
-//       method: 'POST',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       },
-//       mode: 'cors',
-//       body: JSON.stringify(cardConfigs)
-//     })
-//       .then(res => {
-//         if (res.status >= 400) {
-//           throw new Error('Connection failed');
-//         }
-//         // return res.json()
-//       })
-//       .catch(err => console.error(err));
-    
-//     return dispatch(addCard(cardConfigs));
-//   }
-// }
-
 export function postData(cardConfigs) {
   return dispatch => {
-    return fetch('/data/initialState', {
+    fetch('/data/initialState', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -78,11 +55,9 @@ export function postData(cardConfigs) {
         if (res.status >= 400) {
           throw new Error('Connection failed');
         }
-        return res.json()
       })
-      .then(data => dispatch(receiveData(data.cards)))
       .catch(err => console.error(err));
     
-    // return dispatch(addCard(cardConfigs));
+    return dispatch(addCard(cardConfigs));
   }
 }

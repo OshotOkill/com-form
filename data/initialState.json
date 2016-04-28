@@ -11,7 +11,7 @@
         "overlay": {
           "title": "第一个卡片",
           "subtitle": "This is the first card",
-          "image": "<img src={pic1} />"
+          "imageURL": "/public/imgs/01.jpg"
         }
       },
       "cardText": "First wave",
@@ -28,11 +28,45 @@
         "overlay": {
           "title": "第二个卡片",
           "subtitle": "This is the second card",
-          "image": "<img src={pic2} />"
+          "imageURL": "/public/imgs/02.jpg"
         }
       },
       "cardText": "Second wave",
       "cardAction": null
+    },
+    {
+      "id": 2,
+      "cardHeader": {
+        "title": "asdf",
+        "subtitle": "asdf",
+        "avatar": ""
+      },
+      "cardMedia": {
+        "overlay": {
+          "title": "asdf",
+          "subtitle": "asdf",
+          "imageURL": "/public/imgs/01.jpg"
+        }
+      },
+      "cardText": "asdf",
+      "cardAction": ""
+    },
+    {
+      "id": 2,
+      "cardHeader": {
+        "title": "asdf",
+        "subtitle": "asdf",
+        "avatar": ""
+      },
+      "cardMedia": {
+        "overlay": {
+          "title": "asdf",
+          "subtitle": "asdf",
+          "imageURL": "/public/imgs/01.jpg"
+        }
+      },
+      "cardText": "asdf",
+      "cardAction": ""
     }
   ]
 }

@@ -24,7 +24,7 @@ function cards(state = [], action) {
             overlay: {
               title: cardConfigs.cardMedia.overlay.title,
               subtitle: cardConfigs.cardMedia.overlay.subtitle,
-              image: cardConfigs.cardMedia.overlay.image
+              imageURL: cardConfigs.cardMedia.overlay.imageURL
             }
           },
           
