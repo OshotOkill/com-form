@@ -1,7 +1,7 @@
 const webpack = require('webpack'),
       webpackDevMiddleware = require('webpack-dev-middleware'),
       webpackHotMiddleware = require('webpack-hot-middleware'),
-      devConfig = require('./webpack.config.dev'),
+      devConfig = require('../webpack.config.dev'),
       compiler = webpack(devConfig);
 
 const express = require('express'),
@@ -16,12 +16,13 @@ const http = require('http').Server(app),
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-const DATA_FILE = path.join(__dirname, 'data', 'initialState.json');
+const renderHandler = require('./renderHandler');
+const DATA_FILE = path.join(__dirname, '..', 'isomorphic', 'data', 'initialState.json');
 
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: devConfig.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
 
-app.use('/', express.static(path.join(__dirname)));
+app.use('/', express.static(path.join(__dirname, '..')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -32,11 +33,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/index.html`);
-});
+app.use(renderHandler);
 
-app.get('/data/initialState', (req, res) => {
+app.get('/isomorphic/data/initialState', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error(err);
@@ -46,7 +45,7 @@ app.get('/data/initialState', (req, res) => {
   });
 });
 
-app.post('/data/initialState', (req, res) => {
+app.post('/isomorphic/data/initialState', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error('POST ERRROR:', err);

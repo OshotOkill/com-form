@@ -26,7 +26,7 @@ class App extends Component {
   
   componentDidMount() {
     const { actions } = this.props;
-    actions.fetchData();
+    // actions.fetchData();
     socket.on('message', data => console.log(data));
     
     socket.on('newMessage', text => {

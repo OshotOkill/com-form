@@ -26,7 +26,7 @@ export function receiveData(data) {
 
 export function fetchData() {
   return dispatch => {
-    return fetch('/data/initialState')
+    return fetch('/isomorphic/data/initialState')
       .then(res => {
         if (res.status >= 400) {
           throw new Error('Connection failed');
@@ -40,7 +40,7 @@ export function fetchData() {
 
 export function postData(cardConfigs) {
   return dispatch => {
-    fetch('/data/initialState', {
+    fetch('/isomorphic/data/initialState', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
