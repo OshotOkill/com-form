@@ -1,8 +1,8 @@
 const webpack = require('webpack'),
       webpackDevMiddleware = require('webpack-dev-middleware'),
       webpackHotMiddleware = require('webpack-hot-middleware'),
-      config = require('./webpack.config'),
-      compiler = webpack(config);
+      devConfig = require('./webpack.config.dev'),
+      compiler = webpack(devConfig);
 
 const express = require('express'),
       app = express(),
@@ -18,7 +18,7 @@ const cookieParser = require('cookie-parser');
 
 const DATA_FILE = path.join(__dirname, 'data', 'initialState.json');
 
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: devConfig.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
 
 app.use('/', express.static(path.join(__dirname)));
@@ -59,7 +59,6 @@ app.post('/data/initialState', (req, res) => {
         console.error(err);
         process.exit(1);
       }
-      // res.json(state);
     });
   });
 });
