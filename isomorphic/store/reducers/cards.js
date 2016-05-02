@@ -1,5 +1,4 @@
 import * as actionTypes from '../../constants/actionTypes';
-import pic1 from '../../public/imgs/01.jpg';
 
 const { ADD_CARD, DELETE_CARD, RECEIVE_DATA } = actionTypes;
 

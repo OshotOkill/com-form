@@ -1,22 +1,42 @@
-const webpack = require('webpack'),
-      webpackDevMiddleware = require('webpack-dev-middleware'),
-      webpackHotMiddleware = require('webpack-hot-middleware'),
-      devConfig = require('../webpack.config.dev'),
-      compiler = webpack(devConfig);
+// const webpack = require('webpack'),
+//       webpackDevMiddleware = require('webpack-dev-middleware'),
+//       webpackHotMiddleware = require('webpack-hot-middleware'),
+//       devConfig = require('../webpack.config.dev'),
+//       compiler = webpack(devConfig);
 
-const express = require('express'),
-      app = express(),
-      port = 3000;
+// const express = require('express'),
+//       app = express(),
+//       port = 3000;
 
-const http = require('http').Server(app),
-      io = require('socket.io')(http),
-      fs = require('fs'),
-      path = require('path');
+// const http = require('http').Server(app),
+//       io = require('socket.io')(http),
+//       fs = require('fs'),
+//       path = require('path');
 
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+// const bodyParser = require('body-parser');
+// const cookieParser = require('cookie-parser');
 
-const renderHandler = require('./renderHandler');
+// const renderHandler = require('../utils/renderHandlers');
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import devConfig from '../webpack.config.dev';
+import express from 'express';
+import HTTP from 'http';
+import fs from 'fs';
+import path from 'path';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import renderHandler from './renderHandlers';
+import socketIO from 'socket.io';
+
+const compiler = webpack(devConfig);
+const app = express();
+const port = 3000;
+
+const http = HTTP.Server(app);
+const io = socketIO(http);
+
 const DATA_FILE = path.join(__dirname, '..', 'isomorphic', 'data', 'initialState.json');
 
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: devConfig.output.publicPath }));

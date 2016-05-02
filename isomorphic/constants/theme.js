@@ -19,7 +19,9 @@ const myTheme = {
     backgroundColor: indigo600,
     iconColor: white,
     titleFontSize: 17
-  }
+  },
+  
+  userAgent: 'all'
 };
 
 const Theme = getMuiTheme(myTheme);
