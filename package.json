@@ -32,15 +32,18 @@
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
+    "react-isomorphic-render": "^2.1.32",
+    "react-router": "^2.4.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "webpack-isomorphic-tools": "^2.2.50"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:production": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "start": "babel node server/index.js"
   },
   "repository": {

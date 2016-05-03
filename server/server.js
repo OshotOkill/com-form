@@ -1,22 +1,3 @@
-// const webpack = require('webpack'),
-//       webpackDevMiddleware = require('webpack-dev-middleware'),
-//       webpackHotMiddleware = require('webpack-hot-middleware'),
-//       devConfig = require('../webpack.config.dev'),
-//       compiler = webpack(devConfig);
-
-// const express = require('express'),
-//       app = express(),
-//       port = 3000;
-
-// const http = require('http').Server(app),
-//       io = require('socket.io')(http),
-//       fs = require('fs'),
-//       path = require('path');
-
-// const bodyParser = require('body-parser');
-// const cookieParser = require('cookie-parser');
-
-// const renderHandler = require('../utils/renderHandlers');
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
