@@ -1,9 +1,5 @@
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import devConfig from '../webpack.config.dev-client';
 import express from 'express';
-import HTTP from 'http';
+import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
@@ -11,17 +7,13 @@ import cookieParser from 'cookie-parser';
 import renderHandler from './renderHandlers';
 import socketIO from 'socket.io';
 
-const compiler = webpack(devConfig);
 const app = express();
 const port = 3000;
 
-const http = HTTP.Server(app);
+const server = http.Server(app);
 const io = socketIO(http);
 
 const DATA_FILE = path.join(__dirname, '..', 'isomorphic', 'data', 'initialState.json');
-
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: devConfig.output.publicPath }));
-app.use(webpackHotMiddleware(compiler));
 
 app.use('/', express.static(path.join(__dirname, '..')));
 app.use(bodyParser.json());
@@ -34,9 +26,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(renderHandler);
+app.use(renderHandler());
 
-app.get('/isomorphic/data/initialState', (req, res) => {
+app.get('/data/initialState', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error(err);
@@ -46,7 +38,7 @@ app.get('/isomorphic/data/initialState', (req, res) => {
   });
 });
 
-app.post('/isomorphic/data/initialState', (req, res) => {
+app.post('/data/initialState', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error('POST ERRROR:', err);
@@ -73,6 +65,6 @@ io.on('connection', socket => {
   socket.on('disconnect', () => console.log('Disconnect!'));
 });
 
-http.listen(port, err => {
+server.listen(port, err => {
   err ? console.log(err) : console.log('listening port 3000') ;
 });

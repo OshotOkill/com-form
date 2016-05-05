@@ -8,7 +8,7 @@ module.exports = {
     },
     
     styles: {
-      extensions: ['css', 'scss'],
+      extensions: ['css', 'sass'],
       filter(module, regular_expression, options, log) {
 				if (options.development) {
 					return webpack_isomorphic_tools_plugin.style_loader_filter(module, regular_expression, options, log)
