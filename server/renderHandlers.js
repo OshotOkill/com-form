@@ -1,20 +1,16 @@
 import path from 'path';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
-// var path = require('path');
-// var ReactServer = require('react-dom/server');
-// var ReactRedux = require('react-redux');
 import configStore from '../isomorphic/store';
 import App from '../isomorphic/container/app';
 import { readFile } from 'promoise-io';
-// var configStore = require('../isomorphic/store');
-// var App = require('../isomorphic/container/app');
-// var promiseIO = require('promoise-io');
 
-// const { renderToString } = ReactServer;
-// const { Provider } = ReactRedux;
 
 function renderHandler(req, res, next) {
+  // if (_development_) {
+  //   webpack_isomorphic_tools.refresh();
+  // }
+  
   readFile(path.join(__dirname, '..', 'isomorphic', 'data', 'initialState.json'))
     .then(data => {
       const initialState = JSON.parse(data);
