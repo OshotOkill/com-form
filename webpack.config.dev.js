@@ -1,14 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
-var webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin');
-// import path from 'path';
-// import webpack from 'webpack';
-// import webpack_isomorphic_tools_plugin from 'webpack-isomorphic-tools/plugin'
+var webpackIsomorphicTools = require('webpack-isomorphic-tools/plugin');
 
-// webpack_isomorphic_tools_plugin = new webpack_isomorphic_tools_plugin(require('./webpack-isomorphic-config'))
-//                                     .development();
+var webpack_isomorphic_tools_plugin = new webpackIsomorphicTools(require('./webpack-isomorphic-config'));
 
-// export default {
 module.exports = {
   
   devtool: 'eval-source-map',
@@ -32,7 +27,8 @@ module.exports = {
       { test: /\.json$/, loader: 'json-loader'},
       { test: webpack_isomorphic_tools_plugin.regular_expression('styles'), loader: 'style!css' },
       { test: webpack_isomorphic_tools_plugin.regular_expression('images'), loader: 'url-loader?limit=10240'},
-      { test: webpack_isomorphic_tools_plugin.regular_expression('fonts'), loader: 'url?limit=10240' }
+      { test: webpack_isomorphic_tools_plugin.regular_expression('svg'), loader: 'url-loader?limit=10240'},
+      { test: webpack_isomorphic_tools_plugin.regular_expression('fonts'), loader: 'url-loader?limit=10240' }
     ]
   },
   
@@ -41,7 +37,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack_isomorphic_tools_plugin(require('./webpack-isomorphic-config')).development(),
+    webpack_isomorphic_tools_plugin.development()
   ],
   
   progress: true,

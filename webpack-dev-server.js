@@ -4,7 +4,7 @@ var devConfig = require('./webpack.config.dev');
 
 var app = express();
 var port = 3000;
-var compiler = webpack(webpackConfig);
+var compiler = webpack(devConfig);
 
 var serverOptions = {
   noInfo: true,

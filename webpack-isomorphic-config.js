@@ -1,32 +1,57 @@
-// import webpack_isomorphic_tools_plugin from 'webpack-isomorphic-tools/plugin'
-var webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin')
+var webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin');
 
 module.exports = {
   assets: {
     images: {
-      extensions: ['png', 'jpg', 'gif', 'ico', 'svg']
+      extensions: ['png', 'jpg', 'jpeg', 'gif', 'ico'],
+			// parser: webpack_isomorphic_tools_plugin.url_loader_parser
     },
-    
-    styles: {
+		
+		svg: {
+			extensions: ['svg'],
+		  // parser: webpack_isomorphic_tools_plugin.url_loader_parser
+		},
+		
+		styles: {
       extensions: ['css', 'sass'],
-      filter(module, regular_expression, options, log) {
+      filter: function(module, regular_expression, options, log) {
 				if (options.development) {
-					return webpack_isomorphic_tools_plugin.style_loader_filter(module, regular_expression, options, log)
+					return webpack_isomorphic_tools_plugin.style_loader_filter(module, regular_expression, options, log);
 				}
 			},
 
-			// How to correctly transform kinda weird `module.name`
-			// of the `module` created by Webpack "css-loader" 
-			// into the correct asset path:
 			path: webpack_isomorphic_tools_plugin.style_loader_path_extractor,
 
-			// How to extract these Webpack `module`s' javascript `source` code.
-			// Basically takes `module.source` and modifies its `module.exports` a little.
 			parser: webpack_isomorphic_tools_plugin.css_loader_parser
     },
     
+    // style_modules: {
+    //   extensions: ['css', 'sass'],
+    //   filter: function(module, regex, options, log) {
+		// 		if (options.development) {
+		// 			return webpack_isomorphic_tools_plugin.style_loader_filter(module, regex, options, log);
+		// 		} 
+		// 		return regex.test(module.name);				
+		// 	},
+
+		// 	path: function(module, options, log) {
+		// 		if (options.development) {
+		// 			return webpack_isomorphic_tools_plugin.style_loader_path_extractor(module, options, log);
+		// 		}
+		// 		return module.name;
+		// 	},
+			
+		// 	parser: function(module, options, log) {
+		// 		if (options.development) {
+		// 			return webpack_isomorphic_tools_plugin.css_modules_loader_parser(module, options, log);
+		// 		}
+		// 		return module.source;
+		// 	}
+    // },
+		
     fonts: {
-			extensions: ['eot', 'ttf', 'woff', 'woff2']
+			extensions: ['eot', 'ttf', 'woff', 'woff2'],
+			// parser: webpack_isomorphic_tools_plugin.url_loader_parser
     }
-  }
+  }    
 }

@@ -2,7 +2,19 @@
   "name": "material-ui",
   "version": "0.0.0",
   "description": "demo",
-  "main": "index.js",
+  "main": "server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OshotOkill/com-form"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:production": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "start": "node server/index.js",
+    "dev": "npm run watch-client && npm run dev-server",
+    "dev-server": "node ./server/index.js",
+    "watch-client": "node ./webpack-dev-server.js"
+  },
   "dependencies": {
     "body-parser": "^1.15.0",
     "cookie-parser": "^1.4.1",
@@ -42,15 +54,6 @@
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0",
     "webpack-isomorphic-tools": "^2.2.50"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:production": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "start": "node server/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/OshotOkill/com-form"
   },
   "keywords": [
     "react",
