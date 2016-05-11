@@ -7,6 +7,7 @@ var port = 3001;
 var compiler = webpack(devConfig);
 
 var serverOptions = {
+  contentBase: 'http://localhost:3001',
   noInfo: true,
   hot: true,
   publicPath: devConfig.output.publicPath,

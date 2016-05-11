@@ -9,7 +9,7 @@ module.exports = {
   context: __dirname,
     
   entry: [
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
     './client/index',
   ],
   
@@ -17,7 +17,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     chunkFilename: '[name].[hash].js',
-    publicPath: '/static/'
+    publicPath: 'http://localhost:3001/static/'
   },
     
   module: {
@@ -37,7 +37,7 @@ module.exports = {
     new webpack.DefinePlugin({
       __CLIENT__: true,
       __SERVER__: false,
-      __development__: true,
+      __DEVELOPMENT__: true,
       process: {
         env: {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV)

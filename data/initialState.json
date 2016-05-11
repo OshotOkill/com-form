@@ -11,7 +11,7 @@
         "overlay": {
           "title": "第一个卡片",
           "subtitle": "This is the first card",
-          "imageURL": "/public/imgs/01.jpg"
+          "imageURL": "/isomorphic/public/imgs/01.jpg"
         }
       },
       "cardText": "First wave",
@@ -28,7 +28,7 @@
         "overlay": {
           "title": "第二个卡片",
           "subtitle": "This is the second card",
-          "imageURL": "/public/imgs/02.jpg"
+          "imageURL": "/isomorphic/public/imgs/02.jpg"
         }
       },
       "cardText": "Second wave",

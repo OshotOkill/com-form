@@ -38,7 +38,7 @@ class Footer extends Component {
         overlay: {
           title: this.state.value,
           subtitle: this.state.value,
-          imageURL: '/public/imgs/01.jpg'
+          imageURL: '/isomorphic/public/imgs/01.jpg'
         }
       },
       
