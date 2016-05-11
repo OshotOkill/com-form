@@ -2,5 +2,6 @@
 .vscode
 node_modules
 typings
+webpack-assets.json
 jsconfig.json
 tsconfig.json

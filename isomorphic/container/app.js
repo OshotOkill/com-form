@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { Header, LeftNav, Content, Footer, Chat } from '../components';
 import Theme from '../constants/theme';
 import * as actionCreators from '../actions';
 
-import '../public/css/global.css';
-import '../public/css/materialdesignicons.min.css';
+// import '../public/css/global.css';
+// import '../public/css/materialdesignicons.min.css';
 
-const socket = io();
+const socket = io.connect('http://localhost:3000');
 
 class App extends Component {
   constructor(props, context) {
@@ -53,7 +54,8 @@ class App extends Component {
   
   render() {
     const { cards, count, actions } = this.props;
-    
+    require('../public/css/global.css');
+    require('../public/css/materialdesignicons.min.css');
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>

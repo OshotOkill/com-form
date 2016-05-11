@@ -1,10 +1,11 @@
-import express from 'express';
 import http from 'http';
 import fs from 'fs';
 import path from 'path';
+import express from 'express';
+import compression from 'compression'
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import renderHandler from './renderHandlers';
+import renderHandler from './renderHandler';
 import socketIO from 'socket.io';
 
 const app = express();
@@ -15,7 +16,8 @@ const io = socketIO(http);
 
 const DATA_FILE = path.join(__dirname, '..', 'isomorphic', 'data', 'initialState.json');
 
-app.use('/', express.static(path.join(__dirname, '..')));
+app.use(compression());
+app.use(express.static(path.join(__dirname, '..')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -26,7 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(renderHandler());
+app.use(renderHandler);
 
 app.get('/data/initialState', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {

@@ -11,16 +11,33 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:production": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "start": "node server/index.js",
-    "dev": "npm run watch-client && npm run dev-server",
-    "dev-server": "node ./server/index.js",
-    "watch-client": "node ./webpack-dev-server.js"
+    "dev": "concurrent --kill-others \"npm run watch-client\" \"npm run dev-server\" ",
+    "dev-server": "better-npm-run dev-server",
+    "watch-client": "better-npm-run watch-client"
+  },
+  "betterScripts": {
+    "dev-server": {
+      "command": "node ./server/index.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 3000
+      }
+    },
+    "watch-client": {
+      "command": "node ./webpack-dev-server.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 3001
+      }
+    }
   },
   "dependencies": {
     "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "isomorphic-fetch": "^2.2.1",
-    "material-ui": "^0.15.0-beta.2",
+    "material-ui": "^0.15.0",
     "node-mysql": "^0.4.2",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
@@ -42,6 +59,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.7.2",
     "better-npm-run": "0.0.8",
+    "concurrently": "^2.0.0",
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",

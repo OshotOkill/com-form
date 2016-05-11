@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var devConfig = require('./webpack.config.dev');
 
 var app = express();
-var port = 3000;
+var port = 3001;
 var compiler = webpack(devConfig);
 
 var serverOptions = {
