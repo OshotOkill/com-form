@@ -14,16 +14,18 @@ const port = 3000;
 const server = http.Server(app);
 const io = socketIO(http);
 
-const DATA_FILE = path.join(__dirname, '..', 'isomorphic', 'data', 'initialState.json');
+const DATA_FILE = path.join(__dirname, '..', 'data', 'initialState.json');
 
 app.use(compression());
+// Warning! This cannot set static assets directory properly
+// app.use(express.static(`http://localhost:${port}`));
 app.use(express.static(path.join(__dirname, '..')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Cache-Control', 'no-cache');
   next();
 });

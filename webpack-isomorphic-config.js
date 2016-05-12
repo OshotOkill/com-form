@@ -54,7 +54,7 @@ module.exports = {
 		
     fonts: {
 			extensions: ['eot', 'ttf', 'woff', 'woff2'],
-			// regular_expression: /(\.eot(\?v=\d+\.\d+\.\d+)?$)|(\.ttf(\?v=\d+\.\d+\.\d+)?$)|(\.woff(\?v=\d+\.\d+\.\d+)?$)|(\.woff2(\?v=\d+\.\d+\.\d+)?$)/,
+			regular_expression: /(\.eot(\?v=\d+\.\d+\.\d+)?$)|(\.ttf(\?v=\d+\.\d+\.\d+)?$)|(\.woff(\?v=\d+\.\d+\.\d+)?$)|(\.woff2(\?v=\d+\.\d+\.\d+)?$)/,
 			parser: webpack_isomorphic_tools_plugin.url_loader_parser
     }
   }    

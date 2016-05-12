@@ -27,7 +27,6 @@ class App extends Component {
   
   componentDidMount() {
     const { actions } = this.props;
-    // actions.fetchData();
     socket.on('message', data => console.log(data));
     
     socket.on('newMessage', text => {
@@ -54,8 +53,7 @@ class App extends Component {
   
   render() {
     const { cards, count, actions } = this.props;
-    // require('../public/css/global.css');
-    // require('../public/css/materialdesignicons.min.css');
+    
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>
