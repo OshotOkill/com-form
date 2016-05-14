@@ -31,7 +31,6 @@ class Html extends Component {
         <body>
           <div id="root" dangerouslySetInnerHTML={{__html: component}} />
           <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}`}} />
-          {/* A bug occurred here, no javascript code in bundle.js */}
           <script src={assets.javascript.main}></script>
         </body>
       </html>

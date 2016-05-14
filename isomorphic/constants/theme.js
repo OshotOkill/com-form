@@ -21,9 +21,15 @@ const myTheme = {
     titleFontSize: 17
   },
   
-  userAgent: 'all'
+  // userAgent: 'false'
 };
 
-const Theme = getMuiTheme(myTheme);
+const prefixer = {
+  userAgent: 'false'
+  // userAgent: 'all'
+}
+
+// const Theme = getMuiTheme(myTheme);
+const Theme = getMuiTheme(myTheme, prefixer);
 
 export default Theme;

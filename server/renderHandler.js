@@ -12,8 +12,6 @@ function renderHandler(req, res, next) {
   if (__DEVELOPMENT__) {
     webpack_isomorphic_tools.refresh();
   }
-  
-  global.navigator = {userAgent: 'all'};
 
   readFile(path.join(__dirname, '..', 'data', 'initialState.json'))
     .then(data => {
@@ -25,7 +23,12 @@ function renderHandler(req, res, next) {
         </Provider>
       );
       res.status(200).send('<!DOCTYPE html>\n' +
-        renderToString(<Html assets={webpack_isomorphic_tools.assets()} layer={layer} initialState={store.getState()} />));
+        renderToString(
+          <Html 
+            assets={webpack_isomorphic_tools.assets()}
+            layer={layer}
+            initialState={store.getState()} 
+            />));
         
       next();
     })

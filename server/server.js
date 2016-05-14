@@ -17,8 +17,6 @@ const io = socketIO(http);
 const DATA_FILE = path.join(__dirname, '..', 'data', 'initialState.json');
 
 app.use(compression());
-// Warning! This cannot set static assets directory properly
-// app.use(express.static(`http://localhost:${port}`));
 app.use(express.static(path.join(__dirname, '..')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,6 +27,11 @@ app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache');
   next();
 });
+
+// app.use((req, res, next) => {
+//   global.navigator = {userAgent: req.headers['user-agent']};
+//   next();
+// })
 
 app.use(renderHandler);
 
@@ -59,15 +62,15 @@ app.post('/data/initialState', (req, res) => {
   });
 });
 
-io.on('connection', socket => {
-  socket.emit('message', 'Socket.io standing by');
+// io.on('connection', socket => {
+//   socket.emit('message', 'Socket.io standing by');
 
-  socket.on('newMessage', message => {
-    socket.emit('newMessage', message);
-  });
+//   socket.on('newMessage', message => {
+//     socket.emit('newMessage', message);
+//   });
 
-  socket.on('disconnect', () => console.log('Disconnect!'));
-});
+//   socket.on('disconnect', () => console.log('Disconnect!'));
+// });
 
 server.listen(port, err => {
   err ? console.log(err) : console.log('listening port 3000') ;
