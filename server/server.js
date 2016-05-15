@@ -28,10 +28,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use((req, res, next) => {
-//   global.navigator = {userAgent: req.headers['user-agent']};
-//   next();
-// })
+app.use((req, res, next) => {
+  global.navigator = {userAgent: req.header['user-agent']};
+  next();
+})
 
 app.use(renderHandler);
 
@@ -62,15 +62,15 @@ app.post('/data/initialState', (req, res) => {
   });
 });
 
-// io.on('connection', socket => {
-//   socket.emit('message', 'Socket.io standing by');
+io.on('connection', socket => {
+  socket.emit('message', 'Socket.io standing by');
 
-//   socket.on('newMessage', message => {
-//     socket.emit('newMessage', message);
-//   });
+  socket.on('newMessage', message => {
+    socket.emit('newMessage', message);
+  });
 
-//   socket.on('disconnect', () => console.log('Disconnect!'));
-// });
+  socket.on('disconnect', () => console.log('Disconnect!'));
+});
 
 server.listen(port, err => {
   err ? console.log(err) : console.log('listening port 3000') ;

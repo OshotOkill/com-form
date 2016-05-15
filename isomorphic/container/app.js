@@ -4,15 +4,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import { Header, LeftNav, Content, Footer, Chat } from '../components';
-import Theme from '../constants/theme';
+import myTheme from '../constants/theme';
 import * as actionCreators from '../actions';
 
 import '../public/css/global.css';
 import '../public/css/materialdesignicons.min.css';
 
-// const socket = io.connect('http://localhost:3000');
+const socket = io.connect('http://localhost:3000');
 
 class App extends Component {
   constructor(props, context) {
@@ -25,19 +26,20 @@ class App extends Component {
     this.handleRequestChange = this.handleRequestChange.bind(this);
   }
   
-  // componentDidMount() {
-  //   socket.on('message', data => console.log(data));
+  componentDidMount() {
+    const { actions } = this.props;
+    socket.on('message', data => console.log(data));
     
-  //   socket.on('newMessage', text => {
-  //     const messages = this.state.messages;
-  //     messages.push(text);
-  //     this.setState({ messages });
-  //   })
-  // }
+    socket.on('newMessage', text => {
+      const messages = this.state.messages;
+      messages.push(text);
+      this.setState({ messages });
+    })
+  }
   
   getChildContext() {
     return {
-      // socket,
+      socket,
       Toggle: this.handleToggle
     }
   }
@@ -51,10 +53,10 @@ class App extends Component {
   }
   
   render() {
-    const { cards, count, actions } = this.props;
+    const { cards, count, actions, ua } = this.props;
     
     return (
-      <MuiThemeProvider muiTheme={ Theme }>
+      <MuiThemeProvider muiTheme={ getMuiTheme(myTheme, {userAgent: ua}) }>
         <div>
           <Header />
           <LeftNav 
@@ -71,7 +73,7 @@ class App extends Component {
 }
 
 App.childContextTypes = {
-  // socket: React.PropTypes.object,
+  socket: React.PropTypes.object,
   Toggle: React.PropTypes.func
 };
 

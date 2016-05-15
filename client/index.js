@@ -9,12 +9,13 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
+const ua = navigator.userAgent;
 const initialState = window.__INITIAL_STATE__;
 const store = configStore(initialState);
 
 render(
   <Provider store={store}>
-    <App />
+    <App ua={ua} />
   </Provider>,
   document.getElementById('root')
 );

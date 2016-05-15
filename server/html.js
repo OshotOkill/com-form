@@ -14,7 +14,7 @@ class Html extends Component {
           
           {/* Production mode */}
           {Object.keys(assets.styles).map((style, key) =>
-            <link href={assets.styles[style]} key={key} rel="stylesheet" charSet="UTF-8"/>
+            <link href={assets.styles[style]} key={key} rel="stylesheet" />
           )}
           
           {/* Development mode */}

@@ -1,4 +1,3 @@
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { indigo600, white } from 'material-ui/styles/colors';
 
 const myTheme = {
@@ -19,17 +18,7 @@ const myTheme = {
     backgroundColor: indigo600,
     iconColor: white,
     titleFontSize: 17
-  },
-  
-  // userAgent: 'false'
+  }
 };
 
-const prefixer = {
-  userAgent: 'false'
-  // userAgent: 'all'
-}
-
-// const Theme = getMuiTheme(myTheme);
-const Theme = getMuiTheme(myTheme, prefixer);
-
-export default Theme;
+export default myTheme;

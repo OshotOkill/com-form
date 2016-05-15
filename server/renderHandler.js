@@ -19,14 +19,14 @@ function renderHandler(req, res, next) {
       const store = configStore(initialState);
       const layer = (
         <Provider store={store}>
-          <App />
+          <App ua={req.headers['user-agent']} />
         </Provider>
       );
       res.status(200).send('<!DOCTYPE html>\n' +
         renderToString(
           <Html 
-            assets={webpack_isomorphic_tools.assets()}
-            layer={layer}
+            assets={webpack_isomorphic_tools.assets()} 
+            layer={layer} 
             initialState={store.getState()} 
             />));
         

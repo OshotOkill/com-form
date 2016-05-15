@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-require('../server.babel');
+require('babel-register');
 
 global.__CLIENT__ = false;
 global.__SERVER__ = true;

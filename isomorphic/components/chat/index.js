@@ -18,9 +18,9 @@ class Chat extends Component {
   }
   
   handleSubmit() {
-    // const { socket } = this.context;
+    const { socket } = this.context;
     console.log(this.state.value);
-    // socket.emit('newMessage', this.state.value);
+    socket.emit('newMessage', this.state.value);
     this.setState({value: ''});
   }
   
@@ -31,7 +31,7 @@ class Chat extends Component {
         {messages.map(message =>
           <Message message={message} />
         )}
-        <TextField value={ this.state.value } onChange={ this.handleChange } />
+        <TextField value={ this.state.value } id="chat" onChange={ this.handleChange } />
         <RaisedButton label="chat" onClick={ this.handleSubmit } />
       </div>
     )
@@ -39,7 +39,7 @@ class Chat extends Component {
 }
 
 Chat.contextTypes = {
-  // socket: React.PropTypes.object,
+  socket: React.PropTypes.object,
   Toggle: React.PropTypes.func
 }
 
