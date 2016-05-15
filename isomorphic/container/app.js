@@ -54,9 +54,11 @@ class App extends Component {
   
   render() {
     const { cards, count, actions, ua } = this.props;
+    // speed up webpack bundling, deprecated getMuiTheme(myTheme, {userAgent: ua})
+    myTheme.userAgent = ua;
     
     return (
-      <MuiThemeProvider muiTheme={ getMuiTheme(myTheme, {userAgent: ua}) }>
+      <MuiThemeProvider muiTheme={ getMuiTheme(myTheme) }>
         <div>
           <Header />
           <LeftNav 
