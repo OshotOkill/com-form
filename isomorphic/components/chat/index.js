@@ -18,10 +18,10 @@ class Chat extends Component {
   }
   
   handleSubmit() {
-    const { socket } = this.context;
-    console.log(this.state.value);
-    socket.emit('newMessage', this.state.value);
-    this.setState({value: ''});
+    // const { socket } = this.context;
+    // console.log(this.state.value);
+    // socket.emit('newMessage', this.state.value);
+    // this.setState({value: ''});
   }
   
   render() {
