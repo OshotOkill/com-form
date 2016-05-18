@@ -13,7 +13,8 @@ class UserSettings extends Component {
     }
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
   
   handleUsername(e) {
@@ -24,10 +25,8 @@ class UserSettings extends Component {
     this.setState({ password: e.target.value });
   }
   
-  handleSubmit(e) {
-    e.preventDefault();
-
-    fetch('/data/auth', {
+  handleLogin(e) {
+    fetch('/login', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -42,8 +41,8 @@ class UserSettings extends Component {
         if (res.status >= 400) {
           throw new Error('login failed');
         }
-        console.log(res.cookie)
         return res.json();
+        // res.status >= 400 ? throw new Error('login failed') : res.json() ;
       })
       .then(loginUser => console.log(`${loginUser.username} login successful`))
       .catch(err => console.log(err));
@@ -52,6 +51,18 @@ class UserSettings extends Component {
       username: '',
       password: ''
     });
+  }
+  
+  handleLogout() {
+    fetch('/logout')
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error('login failed');
+        }
+        return res.text();
+      })
+      .then(logoutText => console.log('Log out'))
+      .catch(err => console.log(err));
   }
   
   render() {
@@ -66,7 +77,8 @@ class UserSettings extends Component {
           }
           iconElementRight={
             <div>
-              <RaisedButton label="submit" onClick={ this.handleSubmit } />
+              <RaisedButton label="login" onClick={ this.handleLogin } />
+              <RaisedButton label="logout" onClick={ this.handleLogout } />
             </div>
           } 
           />

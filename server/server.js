@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, '..')));
 app.get('/', renderHandler);
 
-app.post('/data/auth', validator);
+app.post('/login', validator);
 
 app.get('/logout', (req, res) => {
    req.session.destroy(() => {
