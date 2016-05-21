@@ -2,10 +2,13 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import App from '../isomorphic/container/app';
+import io from 'socket.io-client';
+import App from '../isomorphic/containers/app';
 import configStore from '../isomorphic/store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
+
+global.socket = io('http://localhost:3000');
 
 injectTapEventPlugin();
 

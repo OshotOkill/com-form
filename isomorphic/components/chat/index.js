@@ -20,8 +20,8 @@ class Chat extends Component {
   handleSubmit() {
     // const { socket } = this.context;
     // console.log(this.state.value);
-    // socket.emit('newMessage', this.state.value);
-    // this.setState({value: ''});
+    socket.emit('newMessage', this.state.value);
+    this.setState({value: ''});
   }
   
   render() {

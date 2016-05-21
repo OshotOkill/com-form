@@ -3,25 +3,25 @@
     {
       "id": 0,
       "cardHeader": {
-        "title": "第一个卡片",
-        "subtitle": "This is the first card",
+        "title": "CLR via C#",
+        "subtitle": "Jeffrey Richter",
         "avatar": ""
       },
       "cardMedia": {
         "overlay": {
-          "title": "第一个卡片",
-          "subtitle": "This is the first card",
-          "imageURL": "/isomorphic/public/imgs/01.jpg"
+          "title": "CLR via C# （The Fourth Edition)",
+          "subtitle": "Jeffrey Richter",
+          "imageURL": "/isomorphic/public/imgs/03.png"
         }
       },
-      "cardText": "First wave",
-      "cardAction": "hello"
+      "cardText": "",
+      "cardAction": ""
     },
     {
       "id": 1,
       "cardHeader": {
-        "title": "第二个卡片",
-        "subtitle": "This is the second card",
+        "title": "Professional JavaScript for Web",
+        "subtitle": "Nicholas C. Zakas",
         "avatar": ""
       },
       "cardMedia": {

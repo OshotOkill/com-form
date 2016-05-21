@@ -3,9 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import express from 'express';
 import session from 'express-session';
-import compression from 'compression'
+import compression from 'compression';
+import favicon from 'serve-favicon';
 import bodyParser from 'body-parser';
-// import cookieParser from 'cookie-parser';
+import multer from 'multer';
 import cors from 'cors';
 import renderHandler from './renderHandler';
 import validator from './validator';
@@ -15,31 +16,36 @@ const app = express();
 const port = 3000;
 
 const server = http.Server(app);
-// const io = socketIO(http);
+const io = socketIO(http);
 
 const DATA_FILE = path.join(__dirname, '..', 'data', 'initialState.json');
 
 app.use(compression());
-
-app.use(cors({origin: 'http://localhost:3000', methods: 'GET, PUT, POST'}));
-
-app.use(session({
-  secret: 'test com-from',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 1000 * 60 * 1
-  }
-}));
+app.use(favicon(path.join(__dirname, '..', 'isomorphic', 'public', 'favicon', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer());
+app.use(cors({origin: 'http://localhost:3000', methods: 'GET, PUT, POST'}));
+app.use(express.static(path.join(__dirname, '..')));
+
+app.use(session({
+  secret: 'test com-from!!!',
+  name: 'a session',
+  resave: true,
+  rolling: true,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: false,
+    maxAge: 1000 * 60 * 60
+  }
+}));
+
 app.use((req, res, next) => {
-  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000', 'http://localhost:3001');
   res.setHeader('Cache-Control', 'no-cache');
   next();
 });
 
-app.use(express.static(path.join(__dirname, '..')));
 app.get('/', renderHandler);
 
 app.post('/login', validator);
@@ -77,16 +83,18 @@ app.post('/data/initialState', (req, res) => {
   });
 });
 
-// io.on('connection', socket => {
-//   socket.emit('message', 'Socket.io standing by');
+io.on('connection', socket => {
+  socket.emit('message', 'Socket.io standing by');
 
-//   socket.on('newMessage', message => {
-//     socket.emit('newMessage', message);
-//   });
+  socket.on('newMessage', message => {
+    socket.emit('newMessage', message);
+  });
 
-//   socket.on('disconnect', () => console.log('Disconnect!'));
-// });
+  socket.on('disconnect', () => console.log('Disconnect!'));
+});
 
-server.listen(port, err => {
+var serverListener = server.listen(port, err => {
   err ? console.log(err) : console.log('listening port 3000') ;
 });
+
+io.listen(serverListener);

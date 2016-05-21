@@ -25,17 +25,25 @@ class App extends Component {
     this.handleToggle = this.handleToggle.bind(this);
     this.handleRequestChange = this.handleRequestChange.bind(this);
   }
+
+  componentDidMount() {
+    if (socket) {
+      socket.on('message', data => console.log(data));
+      socket.on('newMessage', text => {
+        const messages = this.state.messages;
+        messages.push(text);
+        this.setState({ messages });
+      })
+    }
+  }
   
-  // componentDidMount() {
-  //   socket.on('message', data => console.log(data));
-    
-  //   socket.on('newMessage', text => {
-  //     const messages = this.state.messages;
-  //     messages.push(text);
-  //     this.setState({ messages });
-  //   })
-  // }
-  
+  componentWillUnmount() {
+    if (socket) {
+      socket.removeListenr('message');
+      socket.removeListenr('newMessage');
+    }
+  }
+
   getChildContext() {
     return {
       // socket,
@@ -46,28 +54,28 @@ class App extends Component {
   handleToggle() {
     this.setState({ open: !this.state.open });
   }
-  
+
   handleRequestChange(open) {
     this.setState({ open });
   }
-  
+
   render() {
     const { cards, count, actions, ua } = this.props;
     // speed up webpack bundling, deprecated getMuiTheme(myTheme, {userAgent: ua})
     myTheme.userAgent = ua;
-    
+
     return (
       <MuiThemeProvider muiTheme={ getMuiTheme(myTheme) }>
         <div>
           <Header />
-          <LeftNav 
-            open={ this.state.open } 
+          <LeftNav
+            open={ this.state.open }
             requestChange={ this.handleRequestChange }
             />
           <Content cards={cards} actions={actions} />
-          <Footer actions={actions} count={count} />
+{/*          <Footer actions={actions} count={count} />
           <Chat messages={ this.state.messages } />
-          <UserSettings />
+          <UserSettings />*/}
         </div>
       </MuiThemeProvider>
     )
