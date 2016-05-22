@@ -1,5 +1,5 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { indigo600, white } from 'material-ui/styles/colors';
+import { indigo600, white, black } from 'material-ui/styles/colors';
 
 const myTheme = {
   // fontFamily: 'Roboto, Noto Sans S Chinese',
@@ -10,8 +10,9 @@ const myTheme = {
   },
 
   textField: {
-    textColor: white,
-    hintColor: 'rgba(255,255,255,0.5)'
+    textColor: black,
+    // hintColor: 'rgba(255,255,255,0.5)'
+    hintColor: 'rgba(0, 0, 0, 0.5)'
   },
 
   toolbar: {

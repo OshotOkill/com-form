@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import { Header, LeftNav, Content, Footer, Chat } from '../components';
+import { Header, LeftNav, Content, Footer, Chat, UserInput } from '../components';
 import Theme from '../constants/theme';
 import * as actionCreators from '../actions';
 
@@ -65,6 +65,7 @@ class App extends Component {
           <Content cards={cards} actions={actions} />
           <Footer actions={actions} count={count} />
           <Chat messages={ this.state.messages } />
+          <UserInput />
         </div>
       </MuiThemeProvider>
     )

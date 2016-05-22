@@ -1,7 +1,11 @@
-body,ul,li,dt,dd,div {
+body,ul,li,dt,dd {
   margin: 0;
   padding: 0;
   /*font-family: 'segoe UI, Microsoft YaHei light'*/
+}
+
+div {
+  box-sizing: border-box;
 }
 
 .white {

@@ -1,0 +1,40 @@
+/*body,ul,li,dt,dd,div {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+#pinner {
+  width: 200px;
+  height: 500px;
+  background: #1d974b;
+  position: fixed;
+  top: 50px;
+  left: calc((100% - 960px) / 4 - 100px);
+}
+
+#content {
+  width: 960px;
+  height: 2000px;
+  padding: 20px;
+  margin: 50px auto;
+  background: #a9a9a9;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.group {
+  width: 100%;
+  padding: 20px;
+  background: #333;
+  color: #fff;
+  font: 17px;
+  text-align: center;
+  line-height: 20;
+}*/

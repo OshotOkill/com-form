@@ -11,23 +11,39 @@ const express = require('express'),
 const http = require('http').Server(app),
       io = require('socket.io')(http),
       fs = require('fs'),
-      path = require('path');
+      path = require('path'),
+      compression = require('compression'),
+      multer = require('multer'),
+      favicon = require('serve-favicon'),
+      session = require('express-session');
 
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 
 const DATA_FILE = path.join(__dirname, 'data', 'initialState.json');
 
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: devConfig.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
+app.use(compression());
+// app.use(favicon(path.join(__dirname, '..', 'isomorphic', 'public', 'favicon', 'favicon.ico')));
+app.use(session({
+  secret: 'test com-from!!!',
+  name: 'a session',
+  resave: false,
+  rolling: true,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60
+  }
+}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', express.static(path.join(__dirname)));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader('Cache-Control', 'no-cache');
   next();
 });
@@ -35,6 +51,10 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.html`);
 });
+
+app.get('/about', (req, res) => {
+  res.sendFile(`${__dirname}/about.html`);
+})
 
 app.get('/data/initialState', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
