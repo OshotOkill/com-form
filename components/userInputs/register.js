@@ -95,7 +95,8 @@ class Register extends Component {
           />
         <br />
         <TextField 
-          id="password" 
+          id="password"
+          type="password"
           floatingLabelText="请输入密码" 
           errorText={ this.state.errors.password }
           onChange={ this.handleChange }
@@ -123,7 +124,8 @@ class Register extends Component {
         <br />
         <br />
         <br />
-        <RaisedButton label="注册" onClick={ this.handleClick }></RaisedButton> {''}
+        <RaisedButton label="注册" onClick={ this.handleClick }></RaisedButton> 
+        {''}
         <RaisedButton label="重置" onClick={ this.handleReset }></RaisedButton>
       </div>
     )

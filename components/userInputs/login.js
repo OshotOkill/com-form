@@ -36,9 +36,20 @@ class Login extends Component {
   render() {
     return (
       <div style={{width: '960px', margin: '0 auto', padding: '50px'}}>
-        <TextField id="user" floatingLabelText="输入用户名" onChange={ this.handleChange } value={this.state.id} />
+        <TextField 
+          id="user"
+          floatingLabelText="输入用户名"
+          onChange={ this.handleChange }
+          value={this.state.id} 
+          />
         <br />
-        <TextField id="password" floatingLabelText="输入密码" onChange={ this.handleChange } value={this.state.password} />
+        <TextField 
+          id="password" 
+          type="password"
+          floatingLabelText="输入密码" 
+          onChange={ this.handleChange }
+          value={this.state.password} 
+          />
         <br />
         <br />
         <br />

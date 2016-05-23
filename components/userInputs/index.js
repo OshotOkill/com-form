@@ -8,11 +8,7 @@ const styles = {
   tabs: {
     width: '960px',
     margin: '50px auto 0'
-  },
-  
-  // content: {
-  //   margin: '30px 70px'
-  // }  
+  }
 }
 
 class UserInput extends Component {
@@ -33,8 +29,11 @@ class UserInput extends Component {
   render() {
     return (
       <div>
-        <Tabs style={styles.tabs} contentContainerStyle={styles.content} onChange={this.handleChange}
-          value={this.state.slideIndex}>
+        <Tabs 
+          style={styles.tabs}
+          onChange={this.handleChange}
+          value={this.state.slideIndex}
+          >
           <Tab label="登录" value={0} />
           <Tab label="注册" value={1} />
         </Tabs>
