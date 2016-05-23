@@ -1,4 +1,28 @@
 {
+  "user": [
+    {
+      "id": "Norn",
+      "password": "123456",
+      "email": "nlfctx@outlook.com",
+      "phone": "18351927387",
+      "group": null
+    },
+    {
+      "id": "Martin",
+      "password": "654321",
+      "email": "nlfctx@163.com",
+      "phone": "18168035303",
+      "group": null
+    },
+    {
+      "id": "Joe",
+      "password": "111111",
+      "email": "nlfctx@126.com",
+      "phone": "13841625646",
+      "group": null
+    }
+  ],
+  
   "cards": [
     {
       "id": 0,

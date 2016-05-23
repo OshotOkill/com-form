@@ -17,7 +17,6 @@ module.exports = {
   },
   
   plugins: [
-    new webpack.ProvidePlugin({ io: 'socket.io-client' }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()

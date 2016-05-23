@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import io from 'socket.io-client'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import { Header, LeftNav, Content, Footer, Chat, UserInput } from '../components';
 import Theme from '../constants/theme';
 import * as actionCreators from '../actions';
+
+import { 
+  Header, 
+  LeftNav, 
+  Content, 
+  Footer, 
+  Chat, 
+  UserInput, 
+  Groups 
+} from '../components';
 
 import '../public/css/global.css';
 import '../public/css/materialdesignicons.min.css';
@@ -66,6 +75,7 @@ class App extends Component {
           <Footer actions={actions} count={count} />
           <Chat messages={ this.state.messages } />
           <UserInput />
+          <Groups />
         </div>
       </MuiThemeProvider>
     )

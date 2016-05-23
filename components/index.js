@@ -3,6 +3,15 @@ import LeftNav from './appleftnav';
 import Content from './content';
 import Footer from './footer';
 import Chat from './chat';
-import UserInput from './userInputs'
+import UserInput from './userInputs';
+import Groups from './groups'
 
-export { Header, LeftNav, Content, Footer, Chat, UserInput };
+export { 
+  Header, 
+  LeftNav, 
+  Content, 
+  Footer, 
+  Chat, 
+  UserInput,
+  Groups 
+};
