@@ -61,7 +61,7 @@ class Footer extends Component {
       <div> 
         <AppBar iconElementLeft={
             <div>
-              <TextField value={this.state.value} onChange={this.handleChange} />
+              <TextField id="send" value={this.state.value} onChange={this.handleChange} />
               <RaisedButton label='submit' onClick={this.handleClick} />
             </div>
           } 

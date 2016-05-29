@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import Announcement from './announcement';
-import Schedule from './schedule';
+import Group from './group';
 
 
 class Groups extends Component {
   render() {
     return (
-      <div>
-        <Announcement />
-        <Schedule />
-      </div>
+      <Group />
     )
   }
 }

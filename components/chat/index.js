@@ -31,7 +31,7 @@ class Chat extends Component {
         {messages.map(message =>
           <Message message={message} />
         )}
-        <TextField value={ this.state.value } onChange={ this.handleChange } />
+        <TextField id="received-message" value={ this.state.value } onChange={ this.handleChange } />
         <RaisedButton label="chat" onClick={ this.handleSubmit } />
       </div>
     )

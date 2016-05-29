@@ -5,21 +5,43 @@
       "password": "123456",
       "email": "nlfctx@outlook.com",
       "phone": "18351927387",
-      "group": null
+      "admin": true,
+      "group": null,
+      "Message": [] 
     },
     {
       "id": "Martin",
       "password": "654321",
       "email": "nlfctx@163.com",
       "phone": "18168035303",
-      "group": null
+      "group": null,
+      "Message": []       
     },
     {
       "id": "Joe",
       "password": "111111",
       "email": "nlfctx@126.com",
       "phone": "13841625646",
-      "group": null
+      "group": null,
+      "Message": []      
+    }
+  ],
+  
+  "groups": [
+    {
+      "id": 0,
+      "announcement": "",
+      "message": []
+    },
+    {
+      "id": 1,
+      "announcement": "",
+      "message": []            
+    },
+    {
+      "id": 2,
+      "announcement": "",
+      "message": []            
     }
   ],
   

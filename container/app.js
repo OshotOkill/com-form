@@ -14,7 +14,8 @@ import {
   Footer, 
   Chat, 
   UserInput, 
-  Groups 
+  Groups,
+  UserHub
 } from '../components';
 
 import '../public/css/global.css';
@@ -76,6 +77,7 @@ class App extends Component {
           <Chat messages={ this.state.messages } />
           <UserInput />
           <Groups />
+          <UserHub />
         </div>
       </MuiThemeProvider>
     )

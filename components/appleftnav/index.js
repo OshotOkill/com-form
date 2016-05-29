@@ -13,15 +13,12 @@ class LeftNav extends Component {
         onRequestChange={ requestChange }
         >
         <Divider style={{ marginTop: '63px' }}/>
-        <MenuItem >C </MenuItem>
+        <MenuItem>主页</MenuItem>
         <Divider />
-        <MenuItem>C++ </MenuItem>
+        <MenuItem>个人管理</MenuItem>
         <Divider />
-        <MenuItem>C# </MenuItem>
+        <MenuItem>群组管理</MenuItem>
         <Divider />
-        <MenuItem>UWP </MenuItem>
-        <Divider />
-        <MenuItem>HTML / JavaScript </MenuItem>
       </Drawer>
     )
   }

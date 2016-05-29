@@ -19,10 +19,12 @@ class Schedule extends Component {
     this.handlePrev = this.handlePrev.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.renderStepActions = this.renderStepActions.bind(this);
   }
   
   handlePrev() {
     const { stepIndex } = this.state;
+    
     if (stepIndex > 0)
       this.setState({ stepIndex: stepIndex - 1 });
   }
@@ -69,7 +71,7 @@ class Schedule extends Component {
     const { stepIndex, finished } = this.state;
     
     return (
-      <div>
+      <div style={{width: '400px', height: '600px', margin: '0 auto'}}>
         <Stepper orientation="vertical" activeStep={stepIndex}>
           <Step>
             <StepLabel>2018-1-1</StepLabel>
@@ -107,7 +109,7 @@ class Schedule extends Component {
         
         {finished && (
           <p>
-            <a href="javascript:void(0)" onClick={ this.handleReset }>Reset</a>
+            <RaisedButton label="Reset" onTouchTap={ this.handleReset } />
           </p>
         )}
       </div>
