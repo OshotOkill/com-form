@@ -6,15 +6,30 @@
       "email": "nlfctx@outlook.com",
       "phone": "18351927387",
       "admin": true,
-      "group": null,
-      "Message": [] 
+      "subscribe": [],
+      "schedule": [
+        {
+          "time": "2018-01-01",
+          "todo": "吃饭"
+        },
+        {
+          "time": "2018-01-02",
+          "todo": "睡觉"
+        },
+        {
+          "time": "2018-01-02",
+          "todo": "打豆豆"
+        }
+      ],
+      "Message": []
     },
     {
       "id": "Martin",
       "password": "654321",
       "email": "nlfctx@163.com",
       "phone": "18168035303",
-      "group": null,
+      "subscribe": [],
+      "schedule": [],
       "Message": []       
     },
     {
@@ -22,25 +37,48 @@
       "password": "111111",
       "email": "nlfctx@126.com",
       "phone": "13841625646",
-      "group": null,
+      "subscribe": [],
+      "schedule": [],
       "Message": []      
     }
-  ],
-  
+  ],  
   "groups": [
     {
       "id": 0,
-      "announcement": "",
+      "name": "网工一班",
+      "announcement": "XXXXXXXXXXXX",
+      "schedule": [
+        {
+          "time": "2018-01-01",
+          "todo": "上课"
+        },
+        {
+          "time": "2018-01-02",
+          "todo": "吃饭"
+        },
+        {
+          "time": "2018-01-03",
+          "todo": "写作业"
+        },
+        {
+          "time": "2018-01-04",
+          "todo": "睡觉"
+        }
+      ],
       "message": []
     },
     {
       "id": 1,
+      "name": "网工二班",
       "announcement": "",
+      "schedule": [],
       "message": []            
     },
     {
       "id": 2,
+      "name": "网工三班",
       "announcement": "",
+      "schedule": [],
       "message": []            
     }
   ],

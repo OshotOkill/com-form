@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import { List, ListItem } from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
+import Divider from 'material-ui/Divider';
+import TextField from 'material-ui/TextField';
+import UserInfo from './userInfo';
+import Subscribe from './subscribe';
 import {
   Step,
   Stepper,
@@ -13,7 +19,7 @@ class Hub extends Component {
     super(props, context);
     this.state = {
       stepIndex: 0,
-      finished: false
+      finished: false,
     }
     this.handlePrev = this.handlePrev.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -58,9 +64,11 @@ class Hub extends Component {
   
   render() {
     const { stepIndex, finished } = this.state;
-    
+
     return (
       <div style={{maxWidth: '960px', margin: '0 auto'}}>
+        <UserInfo />
+      
         <Stepper activeStep={stepIndex}>
           <Step>
             <StepLabel>2018-1-1</StepLabel>
@@ -97,7 +105,8 @@ class Hub extends Component {
           }
         </div>
         
-        
+        <Subscribe />
+
       </div>
     )
   }
