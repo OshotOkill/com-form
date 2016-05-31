@@ -6,7 +6,7 @@
       "email": "nlfctx@outlook.com",
       "phone": "18351927387",
       "admin": true,
-      "subscribe": [],
+      "subscribes": [],
       "schedule": [
         {
           "time": "2018-01-01",
@@ -21,25 +21,25 @@
           "todo": "打豆豆"
         }
       ],
-      "Message": []
+      "message": []
     },
     {
       "id": "Martin",
       "password": "654321",
       "email": "nlfctx@163.com",
       "phone": "18168035303",
-      "subscribe": [],
+      "subscribes": [],
       "schedule": [],
-      "Message": []       
+      "message": []       
     },
     {
       "id": "Joe",
       "password": "111111",
       "email": "nlfctx@126.com",
       "phone": "13841625646",
-      "subscribe": [],
+      "subscribes": [],
       "schedule": [],
-      "Message": []      
+      "message": []      
     }
   ],  
   "groups": [

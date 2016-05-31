@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import cards from './cards';
-import users from './users';
+import user from './user';
 import groups from './groups';
 
 const rootReducer = combineReducers({
-  cards
+  cards,
+  user,
+  groups
 });
 
 export default rootReducer;

@@ -1,13 +1,11 @@
-import * as actionTypes from '../../constants/actionTypes';
-
-const { RECEIVE_GROUP_ANNOUNCEMENT } = actionTypes;
+import { RECEIVE_GROUPS } from '../../constants/actionTypes';
 
 function groups(state = [], action) {
-  const { anno } = action;
+  const { groups } = action;
   
   switch (action.type) {
-    case RECEIVE_GROUP_ANNOUNCEMENT:
-      return anno
+    case RECEIVE_GROUPS:
+      return groups
   
     default:
       return state

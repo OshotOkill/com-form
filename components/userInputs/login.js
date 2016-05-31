@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import fetch from 'isomorphic-fetch';
 
 class Login extends Component {
   constructor(props, context) {
@@ -27,6 +28,24 @@ class Login extends Component {
   }
   
   handleClick() {
+    fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: this.state.id,
+        password: this.state.password
+      })
+    })
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error('Connection failed');
+        }
+      })
+      .catch(err => console.error(err));
+    
     this.setState({
       id: '',
       password: ''

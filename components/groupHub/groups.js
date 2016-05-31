@@ -3,7 +3,7 @@ import Announcement from './announcement';
 import Schedule from './schedule';
 import Members from './members'
 
-class Group extends Component {
+class Groups extends Component {
   render() {
     return (
       <div>
@@ -15,4 +15,4 @@ class Group extends Component {
   }
 }
 
-export default Group;
+export default Groups;

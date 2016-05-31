@@ -4,7 +4,7 @@ import Content from './content';
 import Footer from './footer';
 import Chat from './chat';
 import UserInput from './userInputs';
-import Groups from './groups';
+import GroupHub from './groupHub';
 import UserHub from './userHub';
 
 export { 
@@ -14,6 +14,6 @@ export {
   Footer, 
   Chat, 
   UserInput,
-  Groups,
+  GroupHub,
   UserHub
 };

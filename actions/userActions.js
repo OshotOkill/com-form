@@ -11,7 +11,7 @@ export function receiveUserInfo(user) {
 
 export function fetchUserInfo(user) {
   return dispatch => {
-    return fetch('/data/initialState/users')
+    return fetch('/api/fetchUsers')
       .then(res => {
         if (res.status >= 400) {
           throw new Error('Receive user failed');
@@ -25,7 +25,7 @@ export function fetchUserInfo(user) {
 
 export function changeUserInfo(user) {
   return dispatch => {
-    fetch('/data/initialState/users/changeInfo', {
+    fetch('/api/changeUserInfo', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -48,7 +48,7 @@ export function changeUserInfo(user) {
 
 export function addUserSubscribe(subscribe) {
   return dispatch => {
-    fetch('/data/initialState/users/addUserSubscribe', {
+    fetch('/api/addUserSubscribe', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -71,7 +71,7 @@ export function addUserSubscribe(subscribe) {
 
 export function addUserSchedule(schedule) {
   return dispatch => {
-    fetch('/data/initialState/users/addUserSchedule', {
+    fetch('/api/addUserSchedule', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

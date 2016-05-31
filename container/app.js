@@ -14,7 +14,7 @@ import {
   Footer, 
   Chat, 
   UserInput, 
-  Groups,
+  GroupHub,
   UserHub
 } from '../components';
 
@@ -76,7 +76,7 @@ class App extends Component {
           <Footer actions={actions} count={count} />
           <Chat messages={ this.state.messages } />
           <UserInput />
-          <Groups />
+          <GroupHub />
           <UserHub />
         </div>
       </MuiThemeProvider>
@@ -91,8 +91,7 @@ App.childContextTypes = {
 
 function mapStateToProps(state) {
   return {
-    cards: state.cards,
-    count: state.cards.length
+    cards: state.cards
   }
 }
 

@@ -52,8 +52,20 @@ app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.html`);
 });
 
-app.get('/about', (req, res) => {
-  res.sendFile(`${__dirname}/about.html`);
+app.get('/login-register', (req, res) => {
+  res.sendfile(`${__dirname}/login-register.html`);
+});
+
+app.get('/userhub', (req, res) => {
+  if (!req.session.id) {
+    res.sendFile(`${__dirname}/userhub.html`);  
+  } else {
+    res.redirect('/userhub');
+  }
+});
+
+app.get('/grouphub', (req, res) => {
+  res.sendfile(`${__dirname}/grouphub.html`);
 });
 
 app.get('/data/initialState', (req, res) => {
@@ -84,19 +96,60 @@ app.post('/data/initialState', (req, res) => {
   });
 });
 
-app.get('/data/initialState/users', (req, res) => {
+app.post('/api/login', (req, res) => {
+  fs.readFile(DATA_FILE, (err, data) => {
+    if (err) {
+      console.error('POST ERRROR:', err);
+      process.exit(1);
+    }
+    const state = JSON.parse(data);
+    const { id, password } = req.body;
+    
+    if (state.user.some(user => user.id === id && user.password === password )) {
+      req.session.id = id;
+      res.redirect(302, '/userhub');
+    } else {
+      res.status(401).send('login failed');
+    }    
+  })
+})
+
+app.post('/api/register', (req, res) => {
+  fs.readFile(DATA_FILE, (err, data) => {
+    if (err) {
+      console.error('POST ERRROR:', err);
+      process.exit(1);
+    }
+    const state = JSON.parse(data);
+    const { id, password, email, phone } = req.body;
+    
+    if (!state.user.some(user => user.id === id)) {
+      const newer = Object.assign({}, {id, password, email, phone}, {
+        subscribes: [],
+        schedule: [],
+        message: []
+      })
+      state.user.push(newer);
+      req.session.id = id;
+      res.redirect(302, '/userhub');
+    }
+  })
+})
+
+app.get('/api/fetchUsers', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error(err);
       process.exit(1);
     }
     const state = JSON.parse(data);
-    const secureState = state.user.map(u => delete u.password);
-    res.json(secureState);
+    const user = state.user.filter(user => user.id === req.session.id);
+    delete user.password;
+    res.json(user);
   });
 })
 
-app.post('/data/initialState/users/changeUserInfo', (req, res) => {
+app.post('/api/changeUserInfo', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error('POST ERROR:', err);
@@ -120,7 +173,7 @@ app.post('/data/initialState/users/changeUserInfo', (req, res) => {
   })
 })
 
-app.post('/data/initialState/users/addUserSubscribe', (req, res) => {
+app.post('/api/addUserSubscribe', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error('POST ERROR:', err);
@@ -148,7 +201,7 @@ app.post('/data/initialState/users/addUserSubscribe', (req, res) => {
   })  
 })
 
-app.post('/data/initialState/users/addSchedule', (req, res) => {
+app.post('/api/addUserSchedule', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error('POST ERROR:', err);
@@ -176,7 +229,7 @@ app.post('/data/initialState/users/addSchedule', (req, res) => {
   })    
 })
 
-app.get('/data/initialState/groups', (req, res) => {
+app.get('/api/fetchGroups', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error(err);
@@ -187,7 +240,7 @@ app.get('/data/initialState/groups', (req, res) => {
   });
 })
 
-app.post('/data/initialState/groups/addGroup', (req, res) => {
+app.post('/api/addGroup', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error('POST ERROR:', err);
@@ -206,7 +259,7 @@ app.post('/data/initialState/groups/addGroup', (req, res) => {
   })
 })
 
-app.post('/data/initialState/groups/addGroupAnnouncement', (req, res) => {
+app.post('/api/addGroupAnnouncement', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error('POST ERROR:', err);
@@ -230,7 +283,7 @@ app.post('/data/initialState/groups/addGroupAnnouncement', (req, res) => {
   })
 })
 
-app.post('/data/initialState/groups/addSchedule', (req, res) => {
+app.post('/api/addSchedule', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
     if (err) {
       console.error('POST ERROR:', err);

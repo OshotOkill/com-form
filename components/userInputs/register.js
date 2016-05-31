@@ -75,6 +75,26 @@ class Register extends Component {
   }
   
   handleClick() {
+    fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: this.state.id,
+        password: this.state.password,
+        email: this.state.email,
+        phone: this.state.phone
+      })
+    })
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error('Connection failed');
+        }
+      })
+      .catch(err => console.error(err));
+      
     this.handleReset();
   }
   

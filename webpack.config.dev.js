@@ -10,9 +10,16 @@ module.exports = {
     './index'
   ],
   
+  // entry: {
+  //   app: ['webpack-hot-middleware/client', './index'],
+  //   userhub: ['webpack-hot-middleware/client', './container/userHub'],
+  //   grouphub: ['webpack-hot-middleware/client', './container/groupHub'],
+  //   loginRegister: ['webpack-hot-middleware/client', './container/login-register']
+  // },
+  
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     publicPath: '/static/'
   },
   

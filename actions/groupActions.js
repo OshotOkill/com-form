@@ -11,7 +11,7 @@ export function receiveGroups(groups) {
 
 export function fetchGroups(groups) {
   return dispatch => {
-    return fetch('/data/initialState/groups')
+    return fetch('/api/fetchGroups')
       .then(res => {
         if (res.status >= 400) {
           throw new Error('Receive groups failed');
@@ -25,7 +25,7 @@ export function fetchGroups(groups) {
 
 export function addGroup(group) {
   return dispatch => {
-    fetch('/data/initialState/groups/addGroup', {
+    fetch('/api/addGroup', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -48,7 +48,7 @@ export function addGroup(group) {
 
 export function addGroupAnnouncement(anno) {
   return dispatch => {
-    fetch('/data/initialState/groups/addGroupAnnouncement', {
+    fetch('/api/addGroupAnnouncement', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -71,7 +71,7 @@ export function addGroupAnnouncement(anno) {
 
 export function addGroupSchedule(schedule) {
   return dispatch => {
-    fetch('/data/initialState/groups/addGroupSchedule', {
+    fetch('/api/addGroupSchedule', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

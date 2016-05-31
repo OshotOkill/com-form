@@ -22,7 +22,7 @@ import {
   addGroupSchedule
 } from './groupActions';
 
-export default {
+export {
   addCard, 
   deleteCard, 
   receiveData, 
@@ -38,4 +38,4 @@ export default {
   addGroup,
   addGroupAnnouncement,
   addGroupSchedule
-}
+};
