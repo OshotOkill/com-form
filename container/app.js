@@ -13,9 +13,6 @@ import {
   Content, 
   Footer, 
   Chat, 
-  UserInput, 
-  GroupHub,
-  UserHub
 } from '../components';
 
 import '../public/css/global.css';
@@ -73,11 +70,8 @@ class App extends Component {
             requestChange={ this.handleRequestChange }
             />
           <Content cards={cards} actions={actions} />
-          <Footer actions={actions} count={count} />
-          <Chat messages={ this.state.messages } />
-          <UserInput />
-          <GroupHub />
-          <UserHub />
+          {/*<Footer actions={actions} count={count} />
+          <Chat messages={ this.state.messages } />*/}
         </div>
       </MuiThemeProvider>
     )

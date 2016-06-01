@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
 import UserInfo from './userInfo';
 import Subscribe from './subscribe';
+import Divider from 'material-ui/Divider';
 import {
   Step,
   Stepper,
@@ -66,10 +66,10 @@ class Hub extends Component {
     const { stepIndex, finished } = this.state;
 
     return (
-      <div style={{maxWidth: '960px', margin: '0 auto'}}>
+      <div style={{maxWidth: '960px', margin: '80px auto'}}>
         <UserInfo />
-      
-        <Stepper activeStep={stepIndex}>
+        <Divider style={{margin: '10px auto'}} />
+        <Stepper activeStep={stepIndex} style={{margin: '50px auto'}}>
           <Step>
             <StepLabel>2018-1-1</StepLabel>
           </Step>
@@ -81,7 +81,7 @@ class Hub extends Component {
           </Step>
         </Stepper>
         
-        <div style={{maxWidth: '480px', margin: '0 auto'}}>
+        <div style={{maxWidth: '360px', margin: '0 auto'}}>
           {finished 
             ? <RaisedButton label="reset" onTouchTap={ this.handleReset } />
             : (
@@ -92,8 +92,9 @@ class Hub extends Component {
                       label="back"
                       disable={stepIndex === 0}
                       onTouchTap={ this.handlePrev }
+                      style={{margin: '20px 30px 0 0'}}
                       />
-                    {' '}
+                    
                     <RaisedButton
                       label={stepIndex === 2 ? 'Finish' : 'Next'}
                       primary={true}
@@ -104,7 +105,6 @@ class Hub extends Component {
               )
           }
         </div>
-        
         <Subscribe />
 
       </div>

@@ -29,7 +29,7 @@ app.use(session({
   secret: 'test com-from!!!',
   name: 'a session',
   resave: false,
-  rolling: true,
+  // rolling: true,
   saveUninitialized: false,
   cookie: {
     maxAge: 1000 * 60 * 60
@@ -52,20 +52,21 @@ app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.html`);
 });
 
-app.get('/login-register', (req, res) => {
-  res.sendfile(`${__dirname}/login-register.html`);
+// naming 'login-register' cannot be rendered
+app.get('/loginRegister', (req, res) => {
+  res.sendFile(`${__dirname}/loginRegister.html`);
 });
 
 app.get('/userhub', (req, res) => {
-  if (!req.session.id) {
+  // if (!req.session.id) {
     res.sendFile(`${__dirname}/userhub.html`);  
-  } else {
-    res.redirect('/userhub');
-  }
+  // } else {
+  //   res.redirect('/');
+  // }
 });
 
 app.get('/grouphub', (req, res) => {
-  res.sendfile(`${__dirname}/grouphub.html`);
+  res.sendFile(`${__dirname}/grouphub.html`);
 });
 
 app.get('/data/initialState', (req, res) => {
@@ -104,10 +105,11 @@ app.post('/api/login', (req, res) => {
     }
     const state = JSON.parse(data);
     const { id, password } = req.body;
-    
-    if (state.user.some(user => user.id === id && user.password === password )) {
+    console.log(id, password);
+    console.log(state.user);
+    if (state.user.some(user => user.id == id && user.password == password )) {
       req.session.id = id;
-      res.redirect(302, '/userhub');
+      res.send('success');
     } else {
       res.status(401).send('login failed');
     }    

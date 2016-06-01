@@ -25,8 +25,7 @@ class LeftGroup extends Component {
           <Home color={white} />
         </IconButton>
         <ToolbarTitle text="首页" />
-        <ToolbarTitle text="聊天" />
-        <ToolbarTitle text="关于" />
+        <ToolbarTitle text="登录/注册" onClick={ e => window.location.href('/loginRegister')} />
 
       </ToolbarGroup>
     )

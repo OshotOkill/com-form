@@ -18,11 +18,9 @@ class Login extends Component {
     switch(e.target.id) {
       case 'user' : 
         this.setState({id: e.target.value}); 
-        console.log(this.state.id);
         break;
       case 'password' : 
         this.setState({password: e.target.value}); 
-        console.log(this.state.id);        
         break;
     }
   }
@@ -42,6 +40,12 @@ class Login extends Component {
       .then(res => {
         if (res.status >= 400) {
           throw new Error('Connection failed');
+        }
+        return res.text();
+      })
+      .then(text => {
+        if (text === 'success') {
+          window.location.href = '/userhub';
         }
       })
       .catch(err => console.error(err));

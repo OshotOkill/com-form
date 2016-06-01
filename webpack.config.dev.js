@@ -5,17 +5,12 @@ module.exports = {
   
   devtool: 'source-map',
     
-  entry: [
-    'webpack-hot-middleware/client',
-    './index'
-  ],
-  
-  // entry: {
-  //   app: ['webpack-hot-middleware/client', './index'],
-  //   userhub: ['webpack-hot-middleware/client', './container/userHub'],
-  //   grouphub: ['webpack-hot-middleware/client', './container/groupHub'],
-  //   loginRegister: ['webpack-hot-middleware/client', './container/login-register']
-  // },
+  entry: {
+    app: ['webpack-hot-middleware/client', './index'],
+    userhub: ['webpack-hot-middleware/client', './container/userHub'],
+    grouphub: ['webpack-hot-middleware/client', './container/groupHub'],
+    loginRegister: ['webpack-hot-middleware/client', './container/loginRegister']
+  },
   
   output: {
     path: path.join(__dirname, 'dist'),
@@ -25,6 +20,11 @@ module.exports = {
   
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'commons.js',
+      chunks: ['app', 'userhub', 'grouphub', 'loginRegister']
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],

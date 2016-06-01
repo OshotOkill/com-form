@@ -69,42 +69,22 @@ class Schedule extends Component {
   
   render() {
     const { stepIndex, finished } = this.state;
+    const { schedules } = this.props;
     
     return (
       <div style={{width: '400px', height: '600px', margin: '0 auto'}}>
         <Stepper orientation="vertical" activeStep={stepIndex}>
-          <Step>
-            <StepLabel>2018-1-1</StepLabel>
-            <StepContent>
-              <p>上课</p>
-              {this.renderStepActions(0)}
-            </StepContent>
-          </Step>
-          
-          <Step>
-            <StepLabel>2018-1-2</StepLabel>
-            <StepContent>
-              <p>吃饭</p>            
-              {this.renderStepActions(1)}
-            </StepContent>
-          </Step>
-          
-          <Step>
-            <StepLabel>2018-1-3</StepLabel>
-            <StepContent>
-              <p>写作业</p>            
-              {this.renderStepActions(2)}
-            </StepContent>
-          </Step>
-          
-          <Step>
-            <StepLabel>2018-1-3</StepLabel>
-            <StepContent>
-              <p>睡觉</p>            
-              {this.renderStepActions(3)}
-            </StepContent>
-          </Step>
-          
+          {schedules.map((schedule, i) => {
+            return (
+            <Step key={schedule.time}>
+              <StepLabel>{schedule.time}</StepLabel>
+              <StepContent>
+                <p>{schedule.todo}</p>
+                {this.renderStepActions(i)}
+              </StepContent>
+            </Step>
+            )
+          })}
         </Stepper>
         
         {finished && (

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Groups from './groups';
+import Announcement from './announcement';
+import Schedule from './schedule';
+import Members from './members';
+import Chat from './chat';
 
-
-class GroupHub extends Component {
-  render() {
-    return (
-      <Groups />
-    )
-  }
+export {
+  Announcement,
+  Schedule,
+  Members,
+  Chat
 }
 
-export default GroupHub;

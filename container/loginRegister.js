@@ -4,46 +4,43 @@ import { render } from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import Theme from '../constants/theme';
 import * as actionCreators from '../actions';
 
 import configStore from '../store';
+import { LeftNav } from '../components'
+import { Login, Register } from '../components/userInputs';
 import AppBar from 'material-ui/AppBar';
-import Avatar from 'material-ui/Avatar';
-import { LeftNav } from '../components';
-import Hub from '../components/userHub';
+import { Tabs, Tab } from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import '../public/css/global.css';
 
-const styles = {
-  header: {
-    
-  },
-  
-  subheader: {
-    width: '25%',
-  },
-  
-  title: {
-   paddingLeft: '20px' 
-  }
-}
 
-class UserHub extends Component {
+const styles = {
+  tabs: {
+    width: '960px',
+    margin: '200px auto 0'
+  }
+};
+
+class UserInput extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      open: false
+      open: false,
+      slideIndex: 0
     };
+    this.handleChange = this.handleChange.bind(this);
     this.handleRequestChange = this.handleRequestChange.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
   }
-  
-  componentDidMount() {
-    const { user, actions } = this.props;
-    actions.fetchUserInfo('Norn');
+
+  handleChange(value) {
+    this.setState({
+      slideIndex: value,
+    });
   }
   
   handleRequestChange(open) {
@@ -53,28 +50,37 @@ class UserHub extends Component {
   handleToggle() {
     this.setState({ open: !this.state.open });
   }
-    
+  
   render() {
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>
           <AppBar 
-            title="Norn" 
-            titleStyle={styles.title} 
-            onLeftIconButtonTouchTap={ this.handleToggle }
-            />
-          <AppBar 
-            showMenuIconButton={false} 
-            style={{paddingLeft: 0, width: '100px', margin: '40px auto', background: '#fff'}}
-            title={<Avatar src="../../public/imgs/avatar.png" size={100}/>} 
-            titleStyle={{overflow: 'visible'}}
-            zDepth={0} 
+            title="登录 & 注册" 
+            titleStyle={{paddingLeft: 'calc(50% - 100px)', fontSize: '20px'}}
+            onLeftIconButtonTouchTap={ this.handleToggle } 
             />
           <LeftNav 
             open={ this.state.open }
             requestChange={ this.handleRequestChange }
             />
-          <Hub />
+          <div style={{background: '#eee'}}>
+            <Tabs 
+              style={styles.tabs}
+              onChange={this.handleChange}
+              value={this.state.slideIndex}
+              >
+              <Tab label="登录" value={0} />
+              <Tab label="注册" value={1} />
+            </Tabs>
+            <SwipeableViews
+              index={this.state.slideIndex}
+              onChangeIndex={this.handleChange}
+              >         
+              <Login />
+              <Register />
+            </SwipeableViews>
+          </div>
         </div>
       </MuiThemeProvider>
     )
@@ -89,16 +95,17 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionCreators, dispatch)
+    actions: bindActionCreators(actionCreators)
   }
 }
 
 injectTapEventPlugin();
-const UH = connect(mapStateToProps, mapDispatchToProps)(UserHub);
+
+const UI = connect(mapStateToProps, mapDispatchToProps)(UserInput);
 
 render(
   <Provider store={ configStore() }>
-    <UH />
+    <UI />
   </Provider>,
   document.getElementById('root')
 );

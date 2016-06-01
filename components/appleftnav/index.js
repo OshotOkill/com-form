@@ -13,11 +13,13 @@ class LeftNav extends Component {
         onRequestChange={ requestChange }
         >
         <Divider style={{ marginTop: '63px' }}/>
-        <MenuItem>主页</MenuItem>
+        <MenuItem onTouchTap={ e => window.location.href = "/" }>首页</MenuItem>
         <Divider />
-        <MenuItem>个人管理</MenuItem>
+        <MenuItem onTouchTap={ e => window.location.href = "/grouphub" }>群组</MenuItem>
         <Divider />
-        <MenuItem>群组管理</MenuItem>
+        <MenuItem onTouchTap={ e => window.location.href = "/userhub" }>个人管理</MenuItem>
+        <Divider />
+        <MenuItem onTouchTap={ e => window.location.href = "/" }>群组管理</MenuItem>
         <Divider />
       </Drawer>
     )

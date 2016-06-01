@@ -14,29 +14,29 @@ import { blue500, indigo600, yellow600 } from 'material-ui/styles/colors';
 class Members extends Component {
   render() {
     return (
-      <div>
-        <List style={{width: '33.3%', border: '2px solid #333', margin: '0 auto 10px'}}>
+      <div style={{width: '960px', margin: '150px auto', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between'}}>
+        <List style={{width: '450px', border: '1px solid #eee'}}>
           <Subheader>在线</Subheader>
           <ListItem 
             primaryText="Norn"
-            leftAvatar={<Avatar />}
+            leftAvatar={<Avatar src="../../public/imgs/avatar.png" />}
             rightIcon={<EmailIcon />}
             />
           <ListItem 
             primaryText="Martin"
-            leftAvatar={<Avatar />}
+            leftAvatar={<Avatar src="../../public/imgs/avatar.png" />}
             rightIcon={<EmailIcon />}
             />
           <Divider />
           <Subheader>离线</Subheader>
           <ListItem 
             primaryText="Joe"
-            leftAvatar={<Avatar />}
+            leftAvatar={<Avatar src="../../public/imgs/avatar.png" />}
             rightIcon={<EmailIcon />}
             />
         </List>
         
-        <List style={{width: '33.3%', border: '2px solid #333', margin: '0 auto 10px'}}>
+        <List style={{width: '450px', border: '1px solid #eee'}}>
           <ListItem 
             primaryText="上传文件/文件夹"
             rightIcon={<FileUpload color={indigo600} />}
