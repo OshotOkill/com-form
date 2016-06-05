@@ -11,9 +11,11 @@
         "react-hmre"
       ]
     }  
-  }
+  },
   
-  // "plugins": [
-    
-  // ]
+  "plugins": [
+    "transform-decorators-legacy",
+    "syntax-class-properties",
+    "transform-class-properties"
+  ]
 }

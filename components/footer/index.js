@@ -4,22 +4,16 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 class Footer extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      value: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
   
-  handleChange(e) {
+  state = { value: '' }
+  
+  handleChange = e => {
     this.setState({
       value: e.target.value
     });   
   }
   
-  handleClick(e) {
+  handleClick = e => {
     if (!this.state.value) {
       return;
     }

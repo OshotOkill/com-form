@@ -11,6 +11,11 @@ import {
 } from 'material-ui/Toolbar';
 
 class LeftGroup extends Component {
+  
+  static contextTypes = {
+    Toggle: React.PropTypes.func    
+  }
+  
   render() {
     const { Toggle } = this.context;
     
@@ -31,9 +36,5 @@ class LeftGroup extends Component {
     )
   }
 }
-
-LeftGroup.contextTypes = {
-  Toggle: React.PropTypes.func
-};
 
 export default LeftGroup;

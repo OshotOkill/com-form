@@ -20,20 +20,28 @@ import '../public/css/materialdesignicons.min.css';
 
 const socket = io();
 
+@connect(
+  state => ({cards: state.cards}),
+  dispatch => ({actions: bindActionCreators(actionCreators, dispatch)})
+)
 class App extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      open: false,
-      messages: []
-    };
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleRequestChange = this.handleRequestChange.bind(this);
+  
+  state = {
+    open: false,
+    messages: []
+  }
+  
+  static childContextTypes = {
+    socket: React.PropTypes.object,
+    Toggle: React.PropTypes.func
+  }
+  
+  componentWillMount() {
+    const { actions } = this.props;
+    actions.fetchData();
   }
   
   componentDidMount() {
-    const { actions } = this.props;
-    actions.fetchData();
     socket.on('message', data => console.log(data));
     
     socket.on('newMessage', text => {
@@ -50,17 +58,17 @@ class App extends Component {
     }
   }
 
-  handleToggle() {
+  handleToggle = () => {
     this.setState({ open: !this.state.open });
   }
   
-  handleRequestChange(open) {
+  handleRequestChange = open => {
     this.setState({ open });
   }
   
   render() {
     const { cards, count, actions } = this.props;
-    
+
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>
@@ -70,29 +78,12 @@ class App extends Component {
             requestChange={ this.handleRequestChange }
             />
           <Content cards={cards} actions={actions} />
-          {/*<Footer actions={actions} count={count} />
-          <Chat messages={ this.state.messages } />*/}
+          <Footer actions={actions} count={count} />
+          <Chat messages={ this.state.messages } />
         </div>
       </MuiThemeProvider>
     )
   }
 }
 
-App.childContextTypes = {
-  socket: React.PropTypes.object,
-  Toggle: React.PropTypes.func
-};
-
-function mapStateToProps(state) {
-  return {
-    cards: state.cards
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actionCreators, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

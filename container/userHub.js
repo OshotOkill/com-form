@@ -27,30 +27,28 @@ const styles = {
   },
   
   title: {
-   paddingLeft: '20px' 
+    paddingLeft: '20px' 
   }
 }
 
+@connect(
+  state => ({ user: state.user }),
+  dispatch => ({ actions: bindActionCreators(actionCreators, dispatch) })
+)
 class UserHub extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      open: false
-    };
-    this.handleRequestChange = this.handleRequestChange.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
-  }
   
-  componentDidMount() {
+  state = { open: false }
+  
+  componentWillMount() {
     const { user, actions } = this.props;
     actions.fetchUserInfo('Norn');
   }
   
-  handleRequestChange(open) {
+  handleRequestChange = open => {
     this.setState({ open });
   }
   
-  handleToggle() {
+  handleToggle = () => {
     this.setState({ open: !this.state.open });
   }
     
@@ -81,24 +79,11 @@ class UserHub extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actionCreators, dispatch)
-  }
-}
-
 injectTapEventPlugin();
-const UH = connect(mapStateToProps, mapDispatchToProps)(UserHub);
 
 render(
   <Provider store={ configStore() }>
-    <UH />
+    <UserHub />
   </Provider>,
   document.getElementById('root')
 );

@@ -25,29 +25,28 @@ const styles = {
   }
 };
 
+@connect(
+  state => ({ user: state.user }),
+  dispatch => ({ actions: bindActionCreators(actionCreators) })
+)
 class UserInput extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      open: false,
-      slideIndex: 0
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleRequestChange = this.handleRequestChange.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
+  
+  state = {
+    open: false,
+    slideIndex: 0
   }
 
-  handleChange(value) {
+  handleChange = value => {
     this.setState({
       slideIndex: value,
     });
   }
   
-  handleRequestChange(open) {
+  handleRequestChange = open => {
     this.setState({ open });
   }
   
-  handleToggle() {
+  handleToggle = () => {
     this.setState({ open: !this.state.open });
   }
   
@@ -87,25 +86,11 @@ class UserInput extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actionCreators)
-  }
-}
-
 injectTapEventPlugin();
-
-const UI = connect(mapStateToProps, mapDispatchToProps)(UserInput);
 
 render(
   <Provider store={ configStore() }>
-    <UI />
+    <UserInput />
   </Provider>,
   document.getElementById('root')
 );

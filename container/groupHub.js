@@ -15,32 +15,29 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import '../public/css/global.css';
 
+@connect(
+  state => ({groups: state.groups}),
+  dispatch => ({actions: bindActionCreators(actionCreators, dispatch)})
+)
 class GroupHub extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      open: false
-    };
-    this.handleRequestChange = this.handleRequestChange.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);   
-  }
+
+  state = { open: false }
   
-  componentDidMount() {
+  componentWillMount() {
     const { actions } = this.props;
     actions.fetchGroups();
   }
   
-  handleRequestChange(open) {
+  handleRequestChange = open => {
     this.setState({ open });
   }
   
-  handleToggle() {
+  handleToggle = () => {
     this.setState({ open: !this.state.open });
   }
   
   render() {
     const { groups, actions } = this.props;
-    
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>
@@ -65,25 +62,25 @@ class GroupHub extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    groups: state.groups
-  }
-}
+// function mapStateToProps(state) {
+//   return {
+//     groups: state.groups
+//   }
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actionCreators, dispatch)
-  }
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(actionCreators, dispatch)
+//   }
+// }
 
 injectTapEventPlugin();
 
-const GH = connect(mapStateToProps, mapDispatchToProps)(GroupHub);
+// const GH = connect(mapStateToProps, mapDispatchToProps)(GroupHub);
 
 render(
   <Provider store={ configStore() }>
-    <GH />
+    <GroupHub />
   </Provider>,
   document.getElementById('root')
 );
