@@ -2,30 +2,23 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const initalState = {
-  id: '',
-  password: '',
-  email: '',
-  phone: '',
-  errors: {
+
+class Register extends Component {
+  
+  state = {
     id: '',
     password: '',
     email: '',
-    phone: ''
-  }
-}
-
-class Register extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = initalState;
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
+    phone: '',
+    errors: {
+      id: '',
+      password: '',
+      email: '',
+      phone: ''
+    }
   }
   
-  handleChange(e) {
+  handleChange = e => {
     const id = e.target.id;
     const value = e.target.value;
     
@@ -45,7 +38,7 @@ class Register extends Component {
     }
   }
   
-  handleBlur(e) {
+  handleBlur = e => {
     const targetId = e.target.id;
     const value = e.target.value;
     const { id, password, email, phone } = this.state.errors;    
@@ -74,7 +67,7 @@ class Register extends Component {
     }
   }
   
-  handleClick() {
+  handleClick = () => {
     fetch('/api/register', {
       method: 'POST',
       headers: {
@@ -98,7 +91,7 @@ class Register extends Component {
     this.handleReset();
   }
   
-  handleReset() {
+  handleReset = () => {
     this.setState(initalState);
   }
   

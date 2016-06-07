@@ -13,28 +13,22 @@ const styles = {
 }
 
 class UserInfo extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      values: {
-        id: 'Norn',
-        mail: 'nlfctx@outlook.com',
-        phone: '18351927387'
-      },
-      
-      disables: {
-        isIdDisable: true,
-        isMailDisable: true,
-        isPhoneDisable: true
-      }
-    };
-    this.handleIdMutate = this.handleIdMutate.bind(this);
-    this.handleMailMutate = this.handleMailMutate.bind(this);
-    this.handlePhoneMutate = this.handlePhoneMutate.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+  
+  state = {
+    values: {
+      id: 'Norn',
+      mail: 'nlfctx@outlook.com',
+      phone: '18351927387'
+    },
+    
+    disables: {
+      isIdDisable: true,
+      isMailDisable: true,
+      isPhoneDisable: true
+    }    
   }
   
-  handleChange(e) {
+  handleChange = e => {
     const { id, mail, phone } = this.state.values;
     const { id: targetId, value } = e.target;
     
@@ -57,7 +51,7 @@ class UserInfo extends Component {
     }
   }
   
-  handleIdMutate() {
+  handleIdMutate = () => {
     this.setState({
       disables: {
         isIdDisable: false,
@@ -67,7 +61,7 @@ class UserInfo extends Component {
     });
   }
   
-  handleMailMutate() {
+  handleMailMutate = () => {
     this.setState({
       disables: {
         isIdDisable: true,
@@ -77,7 +71,7 @@ class UserInfo extends Component {
     });
   }
   
-  handlePhoneMutate() {
+  handlePhoneMutate = () => {
     this.setState({
       disables: {
         isIdDisable: true,

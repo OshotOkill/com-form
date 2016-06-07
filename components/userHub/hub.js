@@ -15,19 +15,13 @@ import {
 
 
 class Hub extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      stepIndex: 0,
-      finished: false,
-    }
-    this.handlePrev = this.handlePrev.bind(this);
-    this.handleNext = this.handleNext.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-    this.renderContent = this.renderContent.bind(this);
+  
+  state = {
+    stepIndex: 0,
+    finished: false
   }
   
-  handlePrev() {
+  handlePrev = () => {
     const { stepIndex } = this.state;
     
     if (stepIndex > 0) {
@@ -35,7 +29,7 @@ class Hub extends Component {
     }
   }
   
-  handleNext() {
+  handleNext = () => {
     const { stepIndex } = this.state;
     
     this.setState({
@@ -44,14 +38,14 @@ class Hub extends Component {
     });
   }
 
-  handleReset(e) {
+  handleReset = e => {
     this.setState({
       stepIndex: 0,
       finished: false
     });
   }
   
-  renderContent(stepIndex) {
+  renderContent = stepIndex => {
     switch (stepIndex) {
       case 0:
         return '吃饭';

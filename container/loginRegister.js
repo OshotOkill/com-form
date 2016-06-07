@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect, Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Theme from '../constants/theme';
-import * as actionCreators from '../actions';
+import * as loginRegisterActions from '../actions/login-register';
 
 import configStore from '../store';
 import { LeftNav } from '../components'
@@ -27,8 +27,7 @@ const styles = {
 
 @connect(
   state => ({ user: state.user }),
-  dispatch => ({ actions: bindActionCreators(actionCreators) })
-)
+  loginRegisterActions)
 class UserInput extends Component {
   
   state = {

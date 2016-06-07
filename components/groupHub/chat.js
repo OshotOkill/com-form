@@ -6,20 +6,14 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 class Chat extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      value: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);   
-  }
   
-  handleChange(e) {
+  state = { value: '' }
+  
+  handleChange = e => {
     this.setState({value: e.target.value});
   }
   
-  handleSubmit() {
+  handleSubmit = () => {
     // const { socket } = this.context;
     // console.log(this.state.value);
     // socket.emit('newMessage', this.state.value);

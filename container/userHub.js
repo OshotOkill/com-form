@@ -6,7 +6,7 @@ import { connect, Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Theme from '../constants/theme';
-import * as actionCreators from '../actions';
+import * as userActions from '../actions/userActions';
 
 import configStore from '../store';
 import AppBar from 'material-ui/AppBar';
@@ -33,15 +33,13 @@ const styles = {
 
 @connect(
   state => ({ user: state.user }),
-  dispatch => ({ actions: bindActionCreators(actionCreators, dispatch) })
-)
+  userActions)
 class UserHub extends Component {
   
   state = { open: false }
   
   componentWillMount() {
-    const { user, actions } = this.props;
-    actions.fetchUserInfo('Norn');
+    this.props.fetchUserInfo('Norn');
   }
   
   handleRequestChange = open => {

@@ -4,17 +4,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 import fetch from 'isomorphic-fetch';
 
 class Login extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      id: '',
-      password: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+
+  state = {
+    id: '',
+    password: ''
   }
-  
-  handleChange(e) {
+    
+  handleChange = e => {
     switch(e.target.id) {
       case 'user' : 
         this.setState({id: e.target.value}); 
@@ -25,7 +21,7 @@ class Login extends Component {
     }
   }
   
-  handleClick() {
+  handleClick = () => {
     fetch('/api/login', {
       method: 'POST',
       headers: {

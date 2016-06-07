@@ -10,26 +10,20 @@ import {
 
 
 class Schedule extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      stepIndex: 0,
-      finished: false
-    }
-    this.handlePrev = this.handlePrev.bind(this);
-    this.handleNext = this.handleNext.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-    this.renderStepActions = this.renderStepActions.bind(this);
+  
+  state = {
+    stepIndex: 0,
+    finished: false
   }
   
-  handlePrev() {
+  handlePrev = () => {
     const { stepIndex } = this.state;
     
     if (stepIndex > 0)
       this.setState({ stepIndex: stepIndex - 1 });
   }
   
-  handleNext() {
+  handleNext = () => {
     const { stepIndex } = this.state;
     
     this.setState({
@@ -38,7 +32,7 @@ class Schedule extends Component {
     });
   }
   
-  handleReset(e) {
+  handleReset = e => {
     e.preventDefault();
     this.setState({
       stepIndex: 0,
@@ -46,7 +40,7 @@ class Schedule extends Component {
     });
   }
   
-  renderStepActions(step) {
+  renderStepActions = step => {
     const { stepIndex } = this.state;
     
     return (

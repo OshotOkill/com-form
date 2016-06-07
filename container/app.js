@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import io from 'socket.io-client'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Theme from '../constants/theme';
-import * as actionCreators from '../actions';
+import * as cardActions  from '../actions/cardActions';
+
 
 import { 
   Header, 
@@ -22,8 +23,7 @@ const socket = io();
 
 @connect(
   state => ({cards: state.cards}),
-  dispatch => ({actions: bindActionCreators(actionCreators, dispatch)})
-)
+  cardActions)
 class App extends Component {
   
   state = {
@@ -37,8 +37,7 @@ class App extends Component {
   }
   
   componentWillMount() {
-    const { actions } = this.props;
-    actions.fetchData();
+    this.props.fetchData();
   }
   
   componentDidMount() {
@@ -68,7 +67,7 @@ class App extends Component {
   
   render() {
     const { cards, count, actions } = this.props;
-
+    console.log('rendered');
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>

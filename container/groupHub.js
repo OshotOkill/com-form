@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import { LeftNav } from '../components';
 import Theme from '../constants/theme';
-import * as actionCreators from '../actions';
+import * as groupActions from '../actions/groupActions';
 import { Announcement, Schedule, Members, Chat } from '../components/groupHub';
 import configStore from '../store';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -17,15 +17,13 @@ import '../public/css/global.css';
 
 @connect(
   state => ({groups: state.groups}),
-  dispatch => ({actions: bindActionCreators(actionCreators, dispatch)})
-)
+  groupActions)
 class GroupHub extends Component {
 
   state = { open: false }
   
   componentWillMount() {
-    const { actions } = this.props;
-    actions.fetchGroups();
+    this.props.fetchGroups();
   }
   
   handleRequestChange = open => {
@@ -37,7 +35,7 @@ class GroupHub extends Component {
   }
   
   render() {
-    const { groups, actions } = this.props;
+    const { groups } = this.props;
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>
@@ -62,21 +60,7 @@ class GroupHub extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     groups: state.groups
-//   }
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(actionCreators, dispatch)
-//   }
-// }
-
 injectTapEventPlugin();
-
-// const GH = connect(mapStateToProps, mapDispatchToProps)(GroupHub);
 
 render(
   <Provider store={ configStore() }>

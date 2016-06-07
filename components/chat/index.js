@@ -4,20 +4,21 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 class Chat extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      value: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  
+  state = {
+    value: ''
   }
   
-  handleChange(e) {
+  static contextTypes = {
+    socket: React.PropTypes.object,
+    Toggle: React.PropTypes.func
+  }
+  
+  handleChange = e => {
     this.setState({value: e.target.value});
   }
   
-  handleSubmit() {
+  handleSubmit = () => {
     const { socket } = this.context;
     console.log(this.state.value);
     socket.emit('newMessage', this.state.value);
@@ -36,11 +37,6 @@ class Chat extends Component {
       </div>
     )
   }
-}
-
-Chat.contextTypes = {
-  socket: React.PropTypes.object,
-  Toggle: React.PropTypes.func
 }
 
 export default Chat;
