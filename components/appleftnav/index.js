@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Drawer from 'material-ui/Drawer';
 import Divider from 'material-ui/Divider';
 import MenuItem from 'material-ui/MenuItem';
+import { Link } from 'react-router';
 
 class LeftNav extends Component {
   render() {
@@ -13,13 +14,15 @@ class LeftNav extends Component {
         onRequestChange={ requestChange }
         >
         <Divider style={{ marginTop: '63px' }}/>
-        <MenuItem onTouchTap={ e => window.location.href = "/" }>首页</MenuItem>
+        <Link to="/"><MenuItem>首页</MenuItem></Link>
         <Divider />
-        <MenuItem onTouchTap={ e => window.location.href = "/grouphub" }>群组</MenuItem>
+        <Link to="/auth"><MenuItem>登录</MenuItem></Link>
         <Divider />
-        <MenuItem onTouchTap={ e => window.location.href = "/userhub" }>个人管理</MenuItem>
+        <Link to="/grouphub"><MenuItem>群组</MenuItem></Link>
         <Divider />
-        <MenuItem onTouchTap={ e => window.location.href = "/" }>群组管理</MenuItem>
+        <Link to="/userhub"><MenuItem>个人管理</MenuItem></Link>
+        <Divider />
+        <Link to="/groupmanager"><MenuItem>群组管理</MenuItem></Link>
         <Divider />
       </Drawer>
     )

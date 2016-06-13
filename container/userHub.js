@@ -1,21 +1,13 @@
-import 'babel-polyfill';
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { bindActionCreators } from 'redux';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import Theme from '../constants/theme';
-import * as userActions from '../actions/userActions';
-
-import configStore from '../store';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
+import Theme from '../constants/theme';
+import * as userActions from '../actions/userActions';
 import { LeftNav } from '../components';
 import Hub from '../components/userHub';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import '../public/css/global.css';
 
 const styles = {
   header: {
@@ -77,11 +69,4 @@ class UserHub extends Component {
   }
 }
 
-injectTapEventPlugin();
-
-render(
-  <Provider store={ configStore() }>
-    <UserHub />
-  </Provider>,
-  document.getElementById('root')
-);
+export default UserHub;

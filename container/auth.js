@@ -1,21 +1,14 @@
-import 'babel-polyfill';
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { bindActionCreators } from 'redux';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
+import fetch from 'isomorphic-fetch';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Theme from '../constants/theme';
-import * as loginRegisterActions from '../actions/login-register';
-
-import configStore from '../store';
-import { LeftNav } from '../components'
-import { Login, Register } from '../components/userInputs';
 import AppBar from 'material-ui/AppBar';
 import { Tabs, Tab } from 'material-ui/Tabs';
+import Theme from '../constants/theme';
+import { LeftNav } from '../components'
+import { Login, Register } from '../components/authorize';
+import * as loginRegisterActions from '../actions/auth';
 import SwipeableViews from 'react-swipeable-views';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-import '../public/css/global.css';
 
 
 const styles = {
@@ -28,7 +21,7 @@ const styles = {
 @connect(
   state => ({ user: state.user }),
   loginRegisterActions)
-class UserInput extends Component {
+class Auth extends Component {
   
   state = {
     open: false,
@@ -44,6 +37,27 @@ class UserInput extends Component {
   handleRequestChange = open => {
     this.setState({ open });
   }
+
+  // handleLoginSubmit = info => {
+  //   e.preventDefault();
+
+  //   fetch('/api/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       info
+  //     })
+  //   })
+  //     .then(res => {
+  //       if (res.status >= 400) {
+  //         throw new Error('login failed');
+  //       }
+  //     })
+  //     .catch(err => console.log(err));
+  // }
   
   handleToggle = () => {
     this.setState({ open: !this.state.open });
@@ -65,7 +79,7 @@ class UserInput extends Component {
           <div style={{background: '#eee'}}>
             <Tabs 
               style={styles.tabs}
-              onChange={this.handleChange}
+              onChange={ this.handleChange }
               value={this.state.slideIndex}
               >
               <Tab label="登录" value={0} />
@@ -73,8 +87,8 @@ class UserInput extends Component {
             </Tabs>
             <SwipeableViews
               index={this.state.slideIndex}
-              onChangeIndex={this.handleChange}
-              >         
+              onChangeIndex={ this.handleChange }
+              >
               <Login />
               <Register />
             </SwipeableViews>
@@ -85,11 +99,4 @@ class UserInput extends Component {
   }
 }
 
-injectTapEventPlugin();
-
-render(
-  <Provider store={ configStore() }>
-    <UserInput />
-  </Provider>,
-  document.getElementById('root')
-);
+export default Auth;

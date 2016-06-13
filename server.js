@@ -48,26 +48,19 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/index.html`);
-});
 
 // naming 'login-register' cannot be rendered
-app.get('/loginRegister', (req, res) => {
-  res.sendFile(`${__dirname}/loginRegister.html`);
-});
+// app.get('/auth', (req, res) => {
+//   res.sendFile(`${__dirname}/auth.html`);
+// });
 
-app.get('/userhub', (req, res) => {
-  // if (!req.session.id) {
-    res.sendFile(`${__dirname}/userhub.html`);  
-  // } else {
-  //   res.redirect('/');
-  // }
-});
+// app.get('/userhub', (req, res) => {
+//   res.sendFile(`${__dirname}/userhub.html`);  
+// });
 
-app.get('/grouphub', (req, res) => {
-  res.sendFile(`${__dirname}/grouphub.html`);
-});
+// app.get('/grouphub', (req, res) => {
+//   res.sendFile(`${__dirname}/grouphub.html`);
+// });
 
 app.get('/data/initialState', (req, res) => {
   fs.readFile(DATA_FILE, (err, data) => {
@@ -106,10 +99,12 @@ app.post('/api/login', (req, res) => {
     const state = JSON.parse(data);
     const { id, password } = req.body;
     console.log(id, password);
-    console.log(state.user);
     if (state.user.some(user => user.id == id && user.password == password )) {
-      req.session.id = id;
-      res.send('success');
+      req.session.user = id;
+      req.session.save(err => {
+        if (err) console.error(err);
+        res.redirect('/userhub');
+      });
     } else {
       res.status(401).send('login failed');
     }    
@@ -309,6 +304,10 @@ app.post('/api/addSchedule', (req, res) => {
   })  
 })
 
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/index.html`);
+});
+
 io.on('connection', socket => {
   socket.emit('message', 'Socket.io standing by');
 
@@ -320,5 +319,5 @@ io.on('connection', socket => {
 });
 
 http.listen(port, err => {
-  err ? console.log(err) : console.log('listening port 3000') ;
+  err ? console.error(err) : console.log('listening port 3000') ;
 });

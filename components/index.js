@@ -3,7 +3,7 @@ import LeftNav from './appleftnav';
 import Content from './content';
 import Footer from './footer';
 import Chat from './chat';
-import UserInput from './userInputs';
+import Auth from './authorize';
 import GroupHub from './groupHub';
 import UserHub from './userHub';
 
@@ -13,7 +13,7 @@ export {
   Content, 
   Footer, 
   Chat, 
-  UserInput,
+  Auth,
   GroupHub,
   UserHub
 };

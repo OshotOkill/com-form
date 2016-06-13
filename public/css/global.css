@@ -8,6 +8,14 @@ div {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none
+}
+
+a:visited {
+  color: inherit
+}
+
 .white {
   background-color: #333;
   color: #fff;

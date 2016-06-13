@@ -7,9 +7,9 @@ module.exports = {
     
   entry: {
     app: ['webpack-hot-middleware/client', './index'],
-    userhub: ['webpack-hot-middleware/client', './container/userHub'],
-    grouphub: ['webpack-hot-middleware/client', './container/groupHub'],
-    loginRegister: ['webpack-hot-middleware/client', './container/loginRegister']
+    // userhub: ['webpack-hot-middleware/client', './container/userHub'],
+    // grouphub: ['webpack-hot-middleware/client', './container/groupHub'],
+    // auth: ['webpack-hot-middleware/client', './container/auth']
   },
   
   output: {
@@ -20,11 +20,11 @@ module.exports = {
   
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: 'commons.js',
-      chunks: ['app', 'userhub', 'grouphub', 'loginRegister']
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'commons',
+    //   filename: 'commons.js',
+    //   chunks: ['app', 'userhub', 'grouphub', 'auth']
+    // }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
