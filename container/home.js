@@ -62,7 +62,7 @@ class Home extends Component {
   
   render() {
     const { cards, count, actions } = this.props;
-    console.log('rendered HOME!!');
+    
     return (
       <MuiThemeProvider muiTheme={ Theme }>
         <div>

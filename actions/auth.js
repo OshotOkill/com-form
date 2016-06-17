@@ -1,2 +1,7 @@
 import fetch from 'isomorphic-fetch';
-import { ADD_USER } from '../constants/actionTypes';
+
+export function login(email, password) {
+  if (sessionStorage.token) {
+    
+  }
+}

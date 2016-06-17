@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
+import RaisedButton from 'material-ui/RaisedButton';
 import Theme from '../constants/theme';
 import * as userActions from '../actions/userActions';
 import { LeftNav } from '../components';
@@ -26,6 +28,7 @@ const styles = {
 @connect(
   state => ({ user: state.user }),
   userActions)
+@withRouter
 class UserHub extends Component {
   
   state = { open: false }
@@ -41,6 +44,13 @@ class UserHub extends Component {
   handleToggle = () => {
     this.setState({ open: !this.state.open });
   }
+
+  handleLogOut = () => {
+    const { router } = this.props;
+    delete localStorage.id;
+    delete localStorage.token;
+    router.push('/auth');
+  }
     
   render() {
     return (
@@ -50,6 +60,12 @@ class UserHub extends Component {
             title="Norn" 
             titleStyle={styles.title} 
             onLeftIconButtonTouchTap={ this.handleToggle }
+            iconElementRight={
+              <RaisedButton 
+                label="注销" 
+                onClick={this.handleLogOut}
+                />
+            }
             />
           <AppBar 
             showMenuIconButton={false} 

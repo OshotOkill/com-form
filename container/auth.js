@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import fetch from 'isomorphic-fetch';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
@@ -17,6 +18,7 @@ const styles = {
     margin: '200px auto 0'
   }
 };
+
 
 @connect(
   state => ({ user: state.user }),
@@ -37,27 +39,6 @@ class Auth extends Component {
   handleRequestChange = open => {
     this.setState({ open });
   }
-
-  // handleLoginSubmit = info => {
-  //   e.preventDefault();
-
-  //   fetch('/api/login', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       info
-  //     })
-  //   })
-  //     .then(res => {
-  //       if (res.status >= 400) {
-  //         throw new Error('login failed');
-  //       }
-  //     })
-  //     .catch(err => console.log(err));
-  // }
   
   handleToggle = () => {
     this.setState({ open: !this.state.open });
@@ -89,8 +70,8 @@ class Auth extends Component {
               index={this.state.slideIndex}
               onChangeIndex={ this.handleChange }
               >
-              <Login />
-              <Register />
+              <Login location={this.props.location} />
+              <Register location={this.props.location} />
             </SwipeableViews>
           </div>
         </div>

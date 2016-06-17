@@ -29,7 +29,6 @@ app.use(session({
   secret: 'test com-from!!!',
   name: 'a session',
   resave: false,
-  // rolling: true,
   saveUninitialized: false,
   cookie: {
     maxAge: 1000 * 60 * 60
@@ -100,11 +99,15 @@ app.post('/api/login', (req, res) => {
     const { id, password } = req.body;
     console.log(id, password);
     if (state.user.some(user => user.id == id && user.password == password )) {
-      req.session.user = id;
-      req.session.save(err => {
-        if (err) console.error(err);
-        res.redirect('/userhub');
-      });
+      // req.session.user = id;
+      // req.session.save(err => {
+      //   if (err) console.error(err);
+      //   res.redirect('/userhub');
+      // });
+      res.json({
+        id, 
+        token: Math.random().toString(36).substring(7)
+      })
     } else {
       res.status(401).send('login failed');
     }    

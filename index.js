@@ -8,19 +8,30 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
-injectTapEventPlugin();
+function isAuthorized(nextState, replace) {
+  if (!!localStorage.token) {
+    replace('/');
+  }
+}
 
-// function AuthEnter(nextState, replace, cb) {
-  
-// }
+function requireUserAuthorization(nextState, replace) {
+  if (!localStorage.token) {
+    replace({
+      pathname: '/auth',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
+
+injectTapEventPlugin();
 
 render(
   <Provider store={ configStore() }>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="auth" component={Auth} />
-        <Route path="userhub" component={UserHub} />
+        <Route path="auth" component={Auth} onEnter={isAuthorized} />
+        <Route path="userhub" component={UserHub} onEnter={requireUserAuthorization} />
         <Route path="grouphub" component={GroupHub} />
       </Route>
     </Router>

@@ -1,15 +1,53 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import fetch from 'isomorphic-fetch';
 
+
+@withRouter
 class Login extends Component {
 
   state = {
     id: '',
     password: ''
   }
-    
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const { location, router } = this.props;
+    const { id, password } = this.state;
+
+    fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        // 'Accept-Encoding': 'gzip, deflate'
+      },
+      body: JSON.stringify({
+        id,
+        password
+      })
+    })
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error('Connection failed');
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log(this.props.location)
+        localStorage.id = data.id;
+        localStorage.token = data.token;
+        location.state && location.state.nextPathname ?
+          router.replace(location.state.nextPathname) :
+          router.replace('/');
+      })
+      .catch(err => console.error(err));
+  } 
+
   handleChange = e => {
     switch(e.target.id) {
       case 'id' : 
@@ -20,42 +58,11 @@ class Login extends Component {
         break;
     }
   }
-
-  // handleClick = () => {
-  //   fetch('/api/login', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       id: this.state.id,
-  //       password: this.state.password
-  //     })
-  //   })
-  //     .then(res => {
-  //       if (res.status >= 400) {
-  //         throw new Error('Connection failed');
-  //       }
-  //       return res.text();
-  //     })
-  //     .then(text => {
-  //       if (text === 'success') {
-  //         window.location.href = '/userhub';
-  //       }
-  //     })
-  //     .catch(err => console.error(err));
-    
-  //   this.setState({
-  //     id: '',
-  //     password: ''
-  //   })
-  // }
   
   render() {
     return (
       <div style={{width: '960px', margin: '0 auto', padding: '50px'}}>
-        <form action="/api/login" method="POST">
+        <form action="/api/login" method="POST" onSubmit={this.handleSubmit} >
           <TextField 
             id="id"
             name="id"
