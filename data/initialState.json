@@ -1,4 +1,102 @@
 {
+  "user": [
+    {
+      "id": "Norn",
+      "password": "123456",
+      "email": "nlfctx@outlook.com",
+      "phone": "18351927387",
+      "admin": true,
+      "subscribes": [],
+      "schedules": [
+        {
+          "time": "2018-01-01",
+          "todo": "吃饭"
+        },
+        {
+          "time": "2018-01-02",
+          "todo": "睡觉"
+        },
+        {
+          "time": "2018-01-02",
+          "todo": "打豆豆"
+        }
+      ],
+      "message": []
+    },
+    {
+      "id": "Martin",
+      "password": "654321",
+      "email": "nlfctx@163.com",
+      "phone": "18168035303",
+      "subscribes": [],
+      "schedule": [],
+      "message": []       
+    },
+    {
+      "id": "Joe",
+      "password": "111111",
+      "email": "nlfctx@126.com",
+      "phone": "13841625646",
+      "subscribes": [],
+      "schedule": [],
+      "message": []      
+    }
+  ],
+    
+  "groups": [
+    {
+      "id": 0,
+      "name": "网工一班",
+      "announcement": "JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。",
+      "schedules": [
+        {
+          "time": "2018-01-01",
+          "todo": "上课"
+        },
+        {
+          "time": "2018-01-02",
+          "todo": "吃饭"
+        },
+        {
+          "time": "2018-01-03",
+          "todo": "写作业"
+        },
+        {
+          "time": "2018-01-04",
+          "todo": "睡觉"
+        }
+      ],
+      "messages": [
+        {
+          "id": "Norn",
+          "text": "hi"
+        },
+        {
+          "id": "Norn",
+          "text": "hey"
+        },
+        {
+          "id": "Norn",
+          "text": "ho"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "网工二班",
+      "announcement": "",
+      "schedule": [],
+      "message": []            
+    },
+    {
+      "id": 2,
+      "name": "网工三班",
+      "announcement": "",
+      "schedule": [],
+      "message": []            
+    }
+  ],
+  
   "cards": [
     {
       "id": 0,

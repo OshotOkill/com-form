@@ -8,17 +8,29 @@ module.exports = {
   devtool: 'eval-source-map',
   context: __dirname,
     
-  entry: [
-    'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
-    './client/index',
-  ],
+  entry: {
+    app: ['webpack-hot-middleware/client', './index'],
+    // userhub: ['webpack-hot-middleware/client', './container/userHub'],
+    // grouphub: ['webpack-hot-middleware/client', './container/groupHub'],
+    // auth: ['webpack-hot-middleware/client', './container/auth']
+  },
   
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    chunkFilename: '[name].[hash].js',
-    publicPath: 'http://localhost:3001/static/'
+    filename: '[name].bundle.js',
+    publicPath: '/static/'
   },
+  
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'commons',
+    //   filename: 'commons.js',
+    //   chunks: ['app', 'userhub', 'grouphub', 'auth']
+    // }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
     
   module: {
     loaders: [
