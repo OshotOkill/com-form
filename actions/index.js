@@ -1,41 +1,9 @@
-import { 
-  addCard, 
-  deleteCard, 
-  receiveData, 
-  fetchData, 
-  postData 
-} from './cardActions';
+import * as cardActions from './cardActions';
+import * as userActions from './userActions';
+import * as groupActions from './groupActions';
 
-import {
-  receiveUserInfo,
-  fetchUserInfo,
-  changeUserInfo,
-  addUserSubscribe,
-  addUserSchedule
-} from './userActions';
-
-import {
-  receiveGroups,
-  fetchGroups,
-  addGroup,
-  addGroupAnnouncement,
-  addGroupSchedule
-} from './groupActions';
-
-export {
-  addCard, 
-  deleteCard, 
-  receiveData, 
-  fetchData, 
-  postData,
-  receiveUserInfo,
-  fetchUserInfo,
-  changeUserInfo,
-  addUserSubscribe,
-  addUserSchedule,
-  receiveGroups,
-  fetchGroups,
-  addGroup,
-  addGroupAnnouncement,
-  addGroupSchedule
+export { 
+  cardActions, 
+  userActions, 
+  groupActions 
 };
